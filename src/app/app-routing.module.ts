@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'found',
+    loadChildren: () => import('./found/found.module').then( m => m.FoundPageModule)
+  },
+  {
+    path: 'lost',
+    loadChildren: () => import('./lost/lost.module').then( m => m.LostPageModule)
+  },
+  {
+    path: 'foundlist',
+    loadChildren: () => import('./foundlist/foundlist.module').then( m => m.FoundlistPageModule)
+  },
+  {
+    path: 'lostlist',
+    loadChildren: () => import('./lostlist/lostlist.module').then( m => m.LostlistPageModule)
+  },
 ];
 
 @NgModule({
