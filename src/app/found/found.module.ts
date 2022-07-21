@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControlName, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,6 +16,6 @@ import { FoundPage } from './found.page';
     IonicModule,
     FoundPageRoutingModule
   ],
-  declarations: [FoundPage, FormGroup, FormControlName, Validators]
+  declarations: [FoundPage]
 })
 export class FoundPageModule {}

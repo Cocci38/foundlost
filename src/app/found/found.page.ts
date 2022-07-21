@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-found',
@@ -25,13 +25,13 @@ export class FoundPage implements OnInit {
   }
   submitForm() {
     let data = {
-      description: '',
+      description: "",
       status: 1,
-      date: '',
-      location: '',
-      firstname: '',
-      lastname: '',
-      email: ''
+      date: "",
+      location: "",
+      firstname: "",
+      lastname: "",
+      email: ""
     }
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
