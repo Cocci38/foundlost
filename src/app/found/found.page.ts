@@ -8,31 +8,40 @@ import { FormGroup, FormControl} from "@angular/forms";
   styleUrls: ['./found.page.scss'],
 })
 export class FoundPage implements OnInit {
-  foundForm: FormGroup;
+  //foundForm: FormGroup;
+  status: boolean;
+  description: string;
+  date: Date;
+  location: string;
+  firstname: string;
+  lastname: string;
+  email: string;
   constructor(public apiService: UserService) { 
-    this.foundForm = new FormGroup({
-      // status: new FormControl(''),
-      description: new FormControl(''),
-      date: new FormControl(''),
-      location: new FormControl(''),
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      email: new FormControl(''),
-    });
+    // this.foundForm = new FormGroup({
+    //   // status: new FormControl(''),
+    //   description: new FormControl(''),
+    //   date: new FormControl(''),
+    //   location: new FormControl(''),
+    //   firstname: new FormControl(''),
+    //   lastname: new FormControl(''),
+    //   email: new FormControl(''),
+    // });
   }
 
   ngOnInit() {
   }
   submitForm() {
     let data = {
-      description: "",
       status: 1,
-      date: "",
-      location: "",
-      firstname: "",
-      lastname: "",
-      email: ""
+      description: this.description,
+      date: this.date,
+      location: this.location,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email
     }
+    console.log(data);
+    
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
   })

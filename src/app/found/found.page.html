@@ -8,34 +8,34 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="foundForm" (ngSubmit)="submitForm()" novalidate>
+  <form (ngSubmit)="submitForm()">
     <ion-list>
       <!-- <ion-item lines="full">
         <ion-input formControlName="status" type="hidden" value="1"></ion-input>
       </ion-item> -->
       <ion-item lines="full">
         <ion-label>Description</ion-label>
-        <ion-input formControlName="description" type="text"></ion-input>
+        <ion-input [(ngModel)]="description" name="description" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
         <ion-label>Date</ion-label>
-        <ion-datetime formControlName="date" [value]="defaultDate"></ion-datetime>
+        <ion-input [(ngModel)]="date" type="date" name="date" [value]="defaultDate"></ion-input>
       </ion-item>
       <ion-item lines="full">
         <ion-label>Lieu</ion-label>
-        <ion-input formControlName="location" type="text"></ion-input>
+        <ion-input [(ngModel)]="location" name="location" type="text"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Prénom</ion-label>
-        <ion-input formControlName="firstname" type="text"></ion-input>
+        <ion-input [(ngModel)]="firstname" name="firstname" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
         <ion-label>Nom</ion-label>
-        <ion-input formControlName="lastname" type="text"></ion-input>
+        <ion-input [(ngModel)]="lastname" name="lastname" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
         <ion-label>Email</ion-label>
-        <ion-input formControlName="email" type="email"></ion-input>
+        <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
       </ion-item>
     </ion-list>
     <ion-row>
