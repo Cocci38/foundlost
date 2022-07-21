@@ -1,37 +1,47 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
-      </ion-buttons>
+      <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
+    </ion-buttons>
     <ion-title>Objet trouvé</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-input type="date"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Lieu</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Prénom</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Nom</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Email</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list>
+  <form [formGroup]="foundForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-list>
+      <!-- <ion-item lines="full">
+        <ion-input formControlName="status" type="hidden" value="1"></ion-input>
+      </ion-item> -->
+      <ion-item lines="full">
+        <ion-label>Description</ion-label>
+        <ion-input formControlName="description" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>Date</ion-label>
+        <ion-datetime formControlName="date" [value]="defaultDate"></ion-datetime>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>Lieu</ion-label>
+        <ion-input formControlName="location" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Prénom</ion-label>
+        <ion-input formControlName="firstname" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>Nom</ion-label>
+        <ion-input formControlName="lastname" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
