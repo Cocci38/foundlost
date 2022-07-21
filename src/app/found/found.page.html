@@ -10,31 +10,28 @@
 <ion-content padding>
   <form (ngSubmit)="submitForm()">
     <ion-list>
-      <!-- <ion-item lines="full">
-        <ion-input formControlName="status" type="hidden" value="1"></ion-input>
-      </ion-item> -->
       <ion-item lines="full">
-        <ion-label>Description</ion-label>
+        <ion-label position="floating">Description</ion-label>
         <ion-input [(ngModel)]="description" name="description" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
-        <ion-label>Date</ion-label>
+        <ion-label position="floating">Date</ion-label>
         <ion-input [(ngModel)]="date" type="date" name="date" [value]="defaultDate"></ion-input>
       </ion-item>
       <ion-item lines="full">
-        <ion-label>Lieu</ion-label>
+        <ion-label position="floating">Lieu</ion-label>
         <ion-input [(ngModel)]="location" name="location" type="text"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Prénom</ion-label>
+        <ion-label position="floating">Prénom</ion-label>
         <ion-input [(ngModel)]="firstname" name="firstname" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
-        <ion-label>Nom</ion-label>
+        <ion-label position="floating">Nom</ion-label>
         <ion-input [(ngModel)]="lastname" name="lastname" type="text"></ion-input>
       </ion-item>
       <ion-item lines="full">
-        <ion-label>Email</ion-label>
+        <ion-label position="floating">Email</ion-label>
         <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
       </ion-item>
     </ion-list>
