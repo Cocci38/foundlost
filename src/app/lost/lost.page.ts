@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
+import { NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-lost',
@@ -19,7 +20,7 @@ export class LostPage implements OnInit {
 
   ngOnInit() {
   }
-  submitForm() {
+  submitForm(form: NgForm) {
     let data = {
       status: 0,
       description: this.description,
@@ -33,7 +34,8 @@ export class LostPage implements OnInit {
     
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
-  })
+  });
+  form.resetForm();
 }
 
 }

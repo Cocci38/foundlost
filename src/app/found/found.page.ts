@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
-import { FormGroup, FormControl} from "@angular/forms";
+import { NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-found',
@@ -29,8 +29,9 @@ export class FoundPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
-  submitForm() {
+  submitForm(form: NgForm) {
     let data = {
       status: 1,
       description: this.description,
@@ -40,11 +41,10 @@ export class FoundPage implements OnInit {
       lastname: this.lastname,
       email: this.email
     }
-    console.log(data);
-    
+    console.log(data, form);
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
-  })
+  });
+    form.resetForm();
 }
-
 }
