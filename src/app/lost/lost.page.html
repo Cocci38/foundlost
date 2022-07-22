@@ -14,30 +14,59 @@
         <ion-label position="floating">Description</ion-label>
         <ion-input [(ngModel)]="description" name="description" type="text"></ion-input>
       </ion-item>
+      <ion-item [hidden]="lostForm.controls.description && (lostForm.controls.description.valid || (lostForm.controls.description.pristine && !isSubmitted))">
+        <ion-text color="danger">Description obligatoire</ion-text>
+      </ion-item>
+
       <ion-item lines="full">
         <ion-label position="floating">Date</ion-label>
         <ion-input [(ngModel)]="date" type="date" name="date" [value]="defaultDate"></ion-input>
       </ion-item>
+      <ion-item [hidden]="lostForm.controls.date && (lostForm.controls.date.valid || (lostForm.controls.date.pristine && !isSubmitted))">
+        <ion-text color="danger">Date obligatoire</ion-text>
+      </ion-item>
+
       <ion-item lines="full">
         <ion-label position="floating">Lieu</ion-label>
         <ion-input [(ngModel)]="location" name="location" type="text"></ion-input>
       </ion-item>
+      <ion-item [hidden]="lostForm.controls.location && (lostForm.controls.location.valid || (lostForm.controls.location.pristine && !isSubmitted))">
+        <ion-text color="danger">Lieu obligatoire</ion-text>
+      </ion-item>
+
       <ion-item>
         <ion-label position="floating">Prénom</ion-label>
         <ion-input [(ngModel)]="firstname" name="firstname" type="text"></ion-input>
       </ion-item>
+      <ion-item [hidden]="lostForm.controls.firstname && (lostForm.controls.firstname.valid || (lostForm.controls.firstname.pristine && !isSubmitted))">
+        <ion-text color="danger">Prénom obligatoire</ion-text>
+      </ion-item>
+
       <ion-item lines="full">
         <ion-label position="floating">Nom</ion-label>
         <ion-input [(ngModel)]="lastname" name="lastname" type="text"></ion-input>
       </ion-item>
+      <ion-item [hidden]="lostForm.controls.lastname && (lostForm.controls.lastname.valid || (lostForm.controls.lastname.pristine && !isSubmitted))">
+        <ion-text color="danger">Nom obligatoire</ion-text>
+      </ion-item>
+
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
-        <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
+        <ion-input [(ngModel)]="email" name="email" type="email" #emailCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item [hidden]="lostForm.controls.email && (lostForm.controls.email.valid || (lostForm.controls.email.pristine && !isSubmitted))">
+        <ion-text color="danger">Email obligatoire</ion-text>
+      </ion-item>
+      <ion-item *ngIf="(isSubmitted)" lines="full" class="!add-text">
+        <ion-text color="success">Demande envoyée</ion-text>
+      </ion-item>
+      <ion-item *ngIf="(!isSubmitted)" lines="full" class="add-text">
+        <ion-text color="danger">Demande non envoyée</ion-text>
       </ion-item>
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+        <ion-button type="submit" color="primary" expand="block">Envoyer</ion-button>
       </ion-col>
     </ion-row>
   </form>

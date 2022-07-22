@@ -15,6 +15,7 @@ export class LostPage implements OnInit {
   firstname: string;
   lastname: string;
   email: string;
+  isSubmitted: boolean;
   constructor(public apiService: UserService) { 
   }
 
@@ -28,15 +29,25 @@ export class LostPage implements OnInit {
       location: this.location,
       firstname: this.firstname,
       lastname: this.lastname,
-      email: this.email
+      email: this.email,
+      tos: false
     }
     console.log(data);
     
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
+      if (!this.description && !this.date && !this.location && !this.firstname && !this.lastname && !this.email) {
+        this.isSubmitted = true;
+      }else {
+        this.isSubmitted!;
+      }
+      
   });
+  
   form.resetForm();
 }
-
+  nosubmitForm(e){
+    e.preventDefault();
+  }
 }
 

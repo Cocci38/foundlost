@@ -16,6 +16,7 @@ export class FoundPage implements OnInit {
   firstname: string;
   lastname: string;
   email: string;
+  isSubmitted = false;
   constructor(public apiService: UserService) { 
     // this.foundForm = new FormGroup({
     //   // status: new FormControl(''),
@@ -43,6 +44,11 @@ export class FoundPage implements OnInit {
     }
     console.log(data, form);
     this.apiService.submitForm(data).subscribe((res) => {
+      if (!this.description && !this.date && !this.location && !this.firstname && !this.lastname && !this.email) {
+        this.isSubmitted = true;
+      }else {
+        this.isSubmitted = false;
+      }
       console.log("SUCCES ===", res);
   });
     form.resetForm();
