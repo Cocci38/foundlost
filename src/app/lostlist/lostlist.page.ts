@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lostlist',
@@ -15,6 +16,7 @@ export class LostlistPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
   getEntry() {
     this.readAPI(this.bdUrl).subscribe((data) => {

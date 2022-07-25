@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./lostlist/lostlist.module').then( m => m.LostlistPageModule)
   },
   {
-    path: 'viewentry',
+    path: 'viewentry/:id',
     loadChildren: () => import('./viewentry/viewentry.module').then( m => m.ViewentryPageModule)
   },
 ];

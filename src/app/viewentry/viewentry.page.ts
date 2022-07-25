@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-viewentry',
@@ -7,8 +8,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./viewentry.page.scss'],
 })
 export class ViewentryPage implements OnInit {
-  bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id=6';
-  entryData = [];
+  
+  // bdUrl: any;
+  // view: any;
+  viewId: any;
   viewData = {
     status: '',
     description: '',
@@ -18,15 +21,24 @@ export class ViewentryPage implements OnInit {
     lastname: '',
     email: ''
   };
-  constructor(public http : HttpClient) { 
+  constructor(public http : HttpClient, private route: ActivatedRoute) { 
     this.getEntry();
+    this.route.params.subscribe(params => {
+      console.log('L\'id de la route est: ', params.id);
+      // this.bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id='+ params.id;
+    });
   }
 
   ngOnInit() {
+    // this.viewId = this.route.snapshot.paramMap.get('id');
+    // console.log(this.viewId);
+    
   }
 
   getEntry() {
-    this.readAPI(this.bdUrl).subscribe((data) => {
+    this.viewId = this.route.snapshot.paramMap.get('id');
+    console.log(this.viewId);
+    this.readAPI('http://localhost/ionicserver/retrieve-data.php?id='+this.viewId).subscribe((data) => {
       this.viewData.status = data['status'];
       this.viewData.description = data['description'];
       this.viewData.location = data['location'];
