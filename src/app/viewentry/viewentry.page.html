@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="LocationStrategy.historyGo(-1)" text="Retour"></ion-back-button>
     </ion-buttons>
-    <ion-title>Un objet en particulier</ion-title>
+    <ion-title>{{viewData.description}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +15,9 @@
             <h1>{{viewData.description}}</h1>
             <p>{{viewData.location}}</p>
             <p>{{viewData.date}}</p>
+            <p>{{viewData.firstname}} </p>
+            <p>{{viewData.lastname}}</p>
+            <p>{{viewData.email}}</p>
           </ion-label>
         </ion-item>
     </ion-card>

@@ -36,16 +36,16 @@ export class ViewentryPage implements OnInit {
   }
 
   getEntry() {
-    this.viewId = this.route.snapshot.paramMap.get('id');
+    this.viewId = this.route.snapshot.params['id'];
     console.log(this.viewId);
     this.readAPI('http://localhost/ionicserver/retrieve-data.php?id='+this.viewId).subscribe((data) => {
       this.viewData.status = data['status'];
       this.viewData.description = data['description'];
       this.viewData.location = data['location'];
       this.viewData.date = data['date'];
-      this.viewData.date = data['firstname'];
-      this.viewData.date = data['lastname'];
-      this.viewData.date = data['email'];
+      this.viewData.firstname = data['firstname'];
+      this.viewData.lastname = data['lastname'];
+      this.viewData.email = data['email'];
       // console.log(this.entryData[0].id );
       
     });
