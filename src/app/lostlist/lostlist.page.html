@@ -8,8 +8,10 @@
 </ion-header>
 
 <ion-content>
+  <div>
   <ion-item>
-    <ion-label>{{description}}</ion-label>
+    <ion-label *ngFor="let lost of entryData"> {{lost.description}}</ion-label>
+    <!-- <ion-label>{{id}}</ion-label> -->
   </ion-item>
-<!-- <ion-text ngFor="let lost of lostData">{{lost.date}}</ion-text> -->
+</div>
 </ion-content>

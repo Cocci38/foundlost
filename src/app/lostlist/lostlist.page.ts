@@ -7,14 +7,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./lostlist.page.scss'],
 })
 export class LostlistPage implements OnInit {
-  lostData = {
-    description: '',
-    location: '',
-    date: ''
-  };
+  // description: string;
+  // location: string;
+  // date: Date;
+  // lostData = {
+  //   description: '',
+  //   location: '',
+  //   date: ''
+  // };
   bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
   entryData = [];
-  constructor(public http: HttpClient) {
+  constructor(public http : HttpClient) {
     this.getEntry();
   }
 
@@ -22,22 +25,20 @@ export class LostlistPage implements OnInit {
   }
   getEntry() {
     this.readAPI(this.bdUrl).subscribe((data) => {
-      console.log(data[0]['description']);
       
-      for (let index = 0; index < Object.keys(data).length; index++) {
-        this.lostData[index] = {
-          "id": data[index].id_object,
-          "status": data[index].status,
-          "description": data[index].description,
-          "date": data[index].date,
-          "location": data[index].location,
-          "firstname": data[index].firstname,
-          "lastname": data[index].lastname,
-          "email": data[index].email
+      for (let i = 0; i<Object.keys(data).length; i++) {
+        this.entryData[i] = {
+          "id": data[i].id_object,
+          "status": data[i].status,
+          "description": data[i].description,
+          "date": data[i].date,
+          "location": data[i].location,
+          "firstname": data[i].firstname,
+          "lastname": data[i].lastname,
+          "email": data[i].email,
         };
-        console.log(data[index]);
-        
       }
+      
     });
   }
   readAPI(URL: string) {
