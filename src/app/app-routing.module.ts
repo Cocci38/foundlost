@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'lostlist',
     loadChildren: () => import('./lostlist/lostlist.module').then( m => m.LostlistPageModule)
   },
+  {
+    path: 'viewentry',
+    loadChildren: () => import('./viewentry/viewentry.module').then( m => m.ViewentryPageModule)
+  },
 ];
 
 @NgModule({

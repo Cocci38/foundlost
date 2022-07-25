@@ -7,14 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./lostlist.page.scss'],
 })
 export class LostlistPage implements OnInit {
-  // description: string;
-  // location: string;
-  // date: Date;
-  // lostData = {
-  //   description: '',
-  //   location: '',
-  //   date: ''
-  // };
+
   bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
   entryData = [];
   constructor(public http : HttpClient) {
@@ -38,11 +31,16 @@ export class LostlistPage implements OnInit {
           "email": data[i].email,
         };
       }
+      // console.log(this.entryData[0].id );
       
     });
   }
   readAPI(URL: string) {
     return this.http.get(URL);
   }
+
+  // viewentry() {
+  //   return this.path('viewentry');
+  // }
 
 }

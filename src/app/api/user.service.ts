@@ -23,7 +23,7 @@ export class UserService {
     return this.http.post('http://localhost/ionicserver/manage-data.php?key=create', data);
   }
 
-  getEntry(data: any) {
-    return this.http.get('http://localhost/ionicserver/retrieve-data.php', data);
-  }
+  // getEntry(data: any) {
+  //   return this.http.get('http://localhost/ionicserver/retrieve-data.php', data);
+  // }
 }

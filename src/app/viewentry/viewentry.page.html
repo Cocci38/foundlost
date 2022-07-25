@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="LocationStrategy.historyGo(-1)" text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Un objet en particulier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card >
+        <ion-item lines="none">
+          <ion-label>
+            <h1>{{viewData.description}}</h1>
+            <p>{{viewData.location}}</p>
+            <p>{{viewData.date}}</p>
+          </ion-label>
+        </ion-item>
+    </ion-card>
+
+  </div>
+</ion-content>

@@ -12,7 +12,10 @@ export class FoundlistPage implements OnInit {
     status: 1,
     description: '',
     location: '',
-    date: ''
+    date: '',
+    firstname: '',
+    lastname: '',
+    email: ''
   };
   constructor(public http: HttpClient) { 
     this.readAPI('http://localhost/ionicserver/retrieve-data.php').subscribe((data) => {

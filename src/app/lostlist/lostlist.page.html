@@ -9,9 +9,23 @@
 
 <ion-content>
   <div>
-  <ion-item>
-    <ion-label *ngFor="let lost of entryData"> {{lost.description}}</ion-label>
-    <!-- <ion-label>{{id}}</ion-label> -->
-  </ion-item>
-</div>
+    <ion-card *ngFor="let lost of entryData">
+      <ion-item-sliding>
+        <ion-item-options side="end">
+          <ion-item-option color="primary" [routerLink]="['/viewentry']">
+            <ion-icon name="eye" size="large"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item lines="none">
+          <ion-label>
+            <h1>{{lost.description}}</h1>
+            <p>{{lost.location}}</p>
+            <p>{{lost.date}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-card>
+
+  </div>
 </ion-content>
