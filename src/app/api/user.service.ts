@@ -23,6 +23,12 @@ export class UserService {
     return this.http.post('http://localhost/ionicserver/manage-data.php?key=create', data);
   }
 
+  // Delete item by id
+  deleteViewData(id: string) {
+    console.log('coucou');
+    
+    return this.http.get('http://localhost/ionicserver/manage-data.php?key=delete&id='+ id);
+  }
   // getEntry(data: any) {
   //   return this.http.get('http://localhost/ionicserver/retrieve-data.php', data);
   // }
