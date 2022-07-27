@@ -28,6 +28,11 @@ export class UserService {
     // console.log('coucou');
     return this.http.get('http://localhost/ionicserver/manage-data.php?key=delete&id='+ id);
   }
+
+  updateViewData(id: string) {
+    // console.log('coucou');
+    return this.http.get('http://localhost/ionicserver/manage-data.php?key=update&id='+ id);
+  }
   // getEntry(data: any) {
   //   return this.http.get('http://localhost/ionicserver/retrieve-data.php', data);
   // }
