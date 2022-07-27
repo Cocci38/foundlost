@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService} from '../api/user.service';
 
 
@@ -24,8 +24,8 @@ export class ViewentryPage implements OnInit {
     lastname: '',
     email: ''
   };
-  constructor(public http : HttpClient, private route: ActivatedRoute, public apiService: UserService) { 
-    this.getEntry();
+  constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) { 
+    
     this.route.params.subscribe(params => {
       console.log('L\'id de la route est: ', params.id);
       // this.bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id='+ params.id;
@@ -35,7 +35,7 @@ export class ViewentryPage implements OnInit {
   ngOnInit() {
     // this.viewId = this.route.snapshot.paramMap.get('id');
     // console.log(this.viewId);
-    
+    this.getEntry();
   }
 
   getEntry() {
@@ -53,12 +53,16 @@ export class ViewentryPage implements OnInit {
       // console.log(this.entryData[0].id );
     });
   }
-  delete(viewData: any) {
-    this.apiService.deleteViewData(this.viewData.id).subscribe((res) => {
+  delete(viewData: any, splice: any) {
+    this.apiService.deleteViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
-      console.log(res);
+      if (delete(this.viewData.id)) {
+        this.router.navigateByUrl("/home");
+      }
+      console.log(this.viewData.id);
       
     });
+    // viewData.resetForm();
   }
   update(viewData: any) {
     

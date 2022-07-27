@@ -25,8 +25,7 @@ export class UserService {
 
   // Delete item by id
   deleteViewData(id: string) {
-    console.log('coucou');
-    
+    // console.log('coucou');
     return this.http.get('http://localhost/ionicserver/manage-data.php?key=delete&id='+ id);
   }
   // getEntry(data: any) {
