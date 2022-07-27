@@ -53,7 +53,7 @@ export class ViewentryPage implements OnInit {
       // console.log(this.entryData[0].id );
     });
   }
-  delete(viewData: any, splice: any) {
+  delete(viewData: any) {
     this.apiService.deleteViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
       if (delete(this.viewData.id)) {
@@ -65,7 +65,11 @@ export class ViewentryPage implements OnInit {
     // viewData.resetForm();
   }
   update(viewData: any) {
-    
+    this.apiService.updateViewData(this.viewData.id).subscribe((viewData) => {
+      this.getEntry();
+      console.log(this.viewData.id);
+      
+    });
   }
   readAPI(URL: string) {
     return this.http.get(URL);
