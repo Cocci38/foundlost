@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="LocationStrategy.historyGo(-1)" text="Retour"></ion-back-button>
+    <ion-buttons slot="start" *ngIf="viewData.status == 0">
+      <ion-back-button defaultHref="/lostlist" text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="viewData.status == 1">
+      <ion-back-button defaultHref="/foundlist" text="Retour"></ion-back-button>
     </ion-buttons>
     <ion-title>{{viewData.description}}</ion-title>
   </ion-toolbar>
@@ -19,12 +22,12 @@
             <p>{{viewData.firstname}} </p>
             <p>{{viewData.lastname}}</p>
             <p>{{viewData.email}}</p>
-            <ion-toolbar>
-              <ion-segment value="{{viewData.status}}" >
-                <ion-segment-button value="0" (click)="update()">
+            <ion-toolbar *ngIf="viewData.status == 0">
+              <ion-segment value="{{viewData.status}}">
+                <ion-segment-button value="0" (click)="update(1)">
                   Perdu
                 </ion-segment-button>
-                <ion-segment-button value="1" (click)="update()">
+                <ion-segment-button value="1" (click)="update(0)">
                   Trouvé
                 </ion-segment-button>
               </ion-segment>

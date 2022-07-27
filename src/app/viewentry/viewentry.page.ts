@@ -67,7 +67,7 @@ export class ViewentryPage implements OnInit {
   update(viewData: any) {
     this.apiService.updateViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
-      console.log(this.viewData.id);
+      console.log(this.viewData.status);
       
     });
   }

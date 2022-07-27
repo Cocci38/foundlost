@@ -16,8 +16,8 @@
             <ion-icon name="eye" size="large"></ion-icon>
           </ion-item-option>
         </ion-item-options>
-        <ion-item lines="none">
-          <ion-label>
+        <ion-item *ngIf="lost.status == 0" lines="none">
+          <ion-label >
             <h1>{{lost.description}}</h1>
             <p>{{lost.location}}</p>
             <p>{{lost.date}}</p>

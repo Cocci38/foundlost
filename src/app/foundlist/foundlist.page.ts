@@ -7,26 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./foundlist.page.scss'],
 })
 export class FoundlistPage implements OnInit {
-  foundApiUrl = '';
-  foundData = {
-    status: 1,
-    description: '',
-    location: '',
-    date: '',
-    firstname: '',
-    lastname: '',
-    email: ''
-  };
-  constructor(public http: HttpClient) { 
-    this.readAPI('http://localhost/ionicserver/retrieve-data.php').subscribe((data) => {
-      console.log(data);
-      console.log(data['0']);
-
-        this.foundData.status = data['status'];
-        this.foundData.description = data['description'];
-        this.foundData.location = data['location'];
-        this.foundData.date = data['date'];
-    })
+  bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
+  entryData = [];
+  constructor(public http : HttpClient) { 
+    this.getEntry();
+  }
+  getEntry() {
+    this.readAPI(this.bdUrl).subscribe((data) => {
+      
+      for (let i = 0; i<Object.keys(data).length; i++) {
+        this.entryData[i] = {
+          "id": data[i].id_object,
+          "status": data[i].status,
+          "description": data[i].description,
+          "date": data[i].date,
+          "location": data[i].location,
+          "firstname": data[i].firstname,
+          "lastname": data[i].lastname,
+          "email": data[i].email,
+        };
+      }
+    });
   }
   readAPI (URL: string) {
     return this.http.get(URL);
