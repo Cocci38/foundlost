@@ -9,20 +9,20 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
-    <ion-icon name="telescope" class="telescope"></ion-icon>
+    <ion-icon name="search" class="telescope"></ion-icon>
     <ion-list>
       <ion-item class="list">Effectuez une déclaration : </ion-item>
-      <ion-item routerLink="/lost">j'ai perdu un objet
+      <ion-item routerLink="/lost" class="route">j'ai perdu un objet
         <ion-icon name="chevron-forward-outline" slot="end" class="chevron"></ion-icon>
       </ion-item>
-      <ion-item routerLink="/found">j'ai trouvé un objet <ion-icon name="chevron-forward-outline" slot="end"
+      <ion-item routerLink="/found" class="route">j'ai trouvé un objet <ion-icon name="chevron-forward-outline" slot="end"
           class="chevron"></ion-icon>
       </ion-item>
       <ion-item class="list">Accédez à la des listes des : </ion-item>
-      <ion-item routerLink="/lostlist">Objets perdus <ion-icon name="chevron-forward-outline" slot="end"
+      <ion-item routerLink="/lostlist" class="route">Objets perdus <ion-icon name="chevron-forward-outline" slot="end"
           class="chevron"></ion-icon>
       </ion-item>
-      <ion-item routerLink="/foundlist">Objets trouvés <ion-icon name="chevron-forward-outline" slot="end"
+      <ion-item routerLink="/foundlist" class="route">Objets trouvés <ion-icon name="chevron-forward-outline" slot="end"
           class="chevron"></ion-icon>
       </ion-item>
     </ion-list>

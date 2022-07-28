@@ -1,0 +1,19 @@
+ion-toolbar {
+    --background: rgb(23,140,164);
+    --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+    --color: #F9F7F0;
+    text-align: center;
+}
+ion-content {
+    --background: #e6f6f7;
+}
+ion-button {
+    --background: rgb(23,140,164);
+    --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+    --color: #F9F7F0;
+}
+ion-item {
+    border: solid 2px #e6f6f7;
+    border-radius: 10px;
+    color: rgb(23,140,164);
+}
