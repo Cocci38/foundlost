@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
     </ion-buttons>
-    <ion-title>Liste des objets perdus</ion-title>
+    <ion-title>Objets perdus</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
     <ion-card *ngIf="lost.status == 0">
       <ion-item-sliding>
         <ion-item-options side="end">
-          <ion-item-option color="primary" routerLink="/viewentry/{{lost.id}}">
+          <ion-item-option routerLink="/viewentry/{{lost.id}}">
             <ion-icon name="eye" size="large"></ion-icon>
           </ion-item-option>
         </ion-item-options>

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>
       Objets trouvés
     </ion-title>
@@ -9,15 +9,23 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
-    <ion-icon name="chatbubbles-outline"></ion-icon>
-      <ion-list>
-        <ion-item color="primary">Effectuez une déclaration</ion-item>
-        <ion-item routerLink="/lost">j'ai perdu un objet</ion-item>
-        <ion-item routerLink="/found">j'ai trouvé un objet</ion-item>
-        <ion-item color="primary">Ou accédez aux listes d'objets</ion-item>
-        <ion-item routerLink="/lostlist">Objets perdus</ion-item>
-        <ion-item routerLink="/foundlist">Objets trouvés</ion-item>
-      </ion-list>
+    <ion-icon name="telescope" class="telescope"></ion-icon>
+    <ion-list>
+      <ion-item class="list">Effectuez une déclaration : </ion-item>
+      <ion-item routerLink="/lost">j'ai perdu un objet
+        <ion-icon name="chevron-forward-outline" slot="end" class="chevron"></ion-icon>
+      </ion-item>
+      <ion-item routerLink="/found">j'ai trouvé un objet <ion-icon name="chevron-forward-outline" slot="end"
+          class="chevron"></ion-icon>
+      </ion-item>
+      <ion-item class="list">Accédez à la des listes des : </ion-item>
+      <ion-item routerLink="/lostlist">Objets perdus <ion-icon name="chevron-forward-outline" slot="end"
+          class="chevron"></ion-icon>
+      </ion-item>
+      <ion-item routerLink="/foundlist">Objets trouvés <ion-icon name="chevron-forward-outline" slot="end"
+          class="chevron"></ion-icon>
+      </ion-item>
+    </ion-list>
 
   </div>
 </ion-content>

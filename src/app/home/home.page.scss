@@ -1,6 +1,6 @@
 #container {
   text-align: center;
-
+  --color: #F9F7F0;
   position: absolute;
   left: 0;
   right: 0;
@@ -17,7 +17,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  // color: #8c8c8c;
 
   margin: 0;
 }
@@ -25,7 +25,27 @@
 #container a {
   text-decoration: none;
 }
-ion-icon {
-  font-size: 144px;
-  color: #8c8c8c;
+ion-content {
+  --background: #e6f6f7;
 }
+.telescope {
+  font-size: 144px;
+}
+ion-toolbar {
+  --background: rgb(23,140,164);
+  --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+  --color: #F9F7F0;
+  text-align: center;
+}
+.list {
+  --background: rgb(23,140,164);
+  --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+  --color: #F9F7F0;
+}
+ion-icon {
+  color: #178ca4;
+}
+ion-list {
+  background: #e6f6f7;
+}
+
