@@ -19,7 +19,6 @@ export class FoundPage implements OnInit {
   email: string;
   isSubmitted = false;
   constructor(public apiService: UserService, public formBuilder: FormBuilder, public toastController: ToastController) {
-
   }
 
   ngOnInit() {

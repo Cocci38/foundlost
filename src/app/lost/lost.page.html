@@ -8,60 +8,64 @@
 </ion-header>
 
 <ion-content padding>
-  <form #lostForm="ngForm" (ngSubmit)="submitForm(lostForm)">
+  <form [formGroup]="lostForm" (ngSubmit)="submitForm()" class="form" novalidate>
     <ion-list>
-      <ion-item lines="full">
+      <ion-item lines="full" class="bg">
         <ion-label position="floating">Description</ion-label>
-        <ion-input [(ngModel)]="description" name="description" type="text" #nameCtrl="ngModel"></ion-input>
+        <ion-input formControlName="description" name="description" type="text"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.description && (lostForm.controls.description.valid || (lostForm.controls.description.pristine && !isSubmitted))">
-        <ion-text color="danger">Description obligatoire</ion-text>
-      </ion-item>
-
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+        La description est requise.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.pattern">
+        description should be min 2 chars long.
+      </span>
       <ion-item lines="full">
         <ion-label position="floating">Date</ion-label>
-        <ion-input [(ngModel)]="date" type="date" name="date" [value]="defaultDate"></ion-input>
+        <ion-input formControlName="date" type="date" name="date" [value]="defaultDate"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.date && (lostForm.controls.date.valid || (lostForm.controls.date.pristine && !isSubmitted))">
-        <ion-text color="danger">Date obligatoire</ion-text>
-      </ion-item>
-
       <ion-item lines="full">
         <ion-label position="floating">Lieu</ion-label>
-        <ion-input [(ngModel)]="location" name="location" type="text"></ion-input>
+        <ion-input formControlName="location" name="location" type="text"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.location && (lostForm.controls.location.valid || (lostForm.controls.location.pristine && !isSubmitted))">
-        <ion-text color="danger">Lieu obligatoire</ion-text>
-      </ion-item>
-
-      <ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.required">
+        Le lieu est requis.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.pattern">
+        Le lieu doit comporter au moins 3 caractères.
+      </span>
+      <ion-item lines="full">
         <ion-label position="floating">Prénom</ion-label>
-        <ion-input [(ngModel)]="firstname" name="firstname" type="text"></ion-input>
+        <ion-input formControlName="firstname" name="firstname" type="text"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.firstname && (lostForm.controls.firstname.valid || (lostForm.controls.firstname.pristine && !isSubmitted))">
-        <ion-text color="danger">Prénom obligatoire</ion-text>
-      </ion-item>
-
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.firstname.errors?.required">
+        Le prénom est requis.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.firstname.errors?.pattern">
+        Le prénom doit comporter au moins 3 caractères.
+      </span>
       <ion-item lines="full">
         <ion-label position="floating">Nom</ion-label>
-        <ion-input [(ngModel)]="lastname" name="lastname" type="text"></ion-input>
+        <ion-input formControlName="lastname" name="lastname" type="text"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.lastname && (lostForm.controls.lastname.valid || (lostForm.controls.lastname.pristine && !isSubmitted))">
-        <ion-text color="danger">Nom obligatoire</ion-text>
-      </ion-item>
-
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lastname.errors?.required">
+        Le nom est requis.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lastname.errors?.pattern">
+        Le nom doit comporter au moins 3 caractères.
+      </span>
       <ion-item lines="full">
         <ion-label position="floating">Email</ion-label>
-        <ion-input [(ngModel)]="email" name="email" type="email" #emailCtrl="ngModel"></ion-input>
+        <ion-input formControlName="email" name="email" type="email"></ion-input>
       </ion-item>
-      <ion-item [hidden]="lostForm.controls.email && (lostForm.controls.email.valid || (lostForm.controls.email.pristine && !isSubmitted))">
-        <ion-text color="danger">Email obligatoire</ion-text>
-      </ion-item>
-      <ion-item *ngIf="(isSubmitted)" lines="full" class="!add-text">
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+        L'email est requis.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+        L'email doit comporter au moins 3 caractères.
+      </span>
+      <ion-item *ngIf="isSubmitted && lostForm.valid " class="valid">
         <ion-text color="success">Demande envoyée</ion-text>
-      </ion-item>
-      <ion-item *ngIf="(!isSubmitted)" lines="full" class="add-text">
-        <ion-text color="danger">Demande non envoyée</ion-text>
       </ion-item>
     </ion-list>
     <ion-row>
