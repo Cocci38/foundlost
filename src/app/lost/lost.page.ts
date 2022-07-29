@@ -36,12 +36,12 @@ export class LostPage implements OnInit {
     
     this.apiService.submitForm(data).subscribe((res) => {
       console.log("SUCCES ===", res);
-      if (!this.description && !this.date && !this.location && !this.firstname && !this.lastname && !this.email) {
-        this.isSubmitted = true;
-      }else {
-        this.isSubmitted!;
-      }
-      
+      // if (!this.description && !this.date && !this.location && !this.firstname && !this.lastname && !this.email) {
+      //   this.isSubmitted = true;
+      // }else {
+      //   this.isSubmitted!;
+      // }
+      this.isSubmitted = true;
   });
   
   form.resetForm();

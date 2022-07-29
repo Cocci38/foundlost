@@ -12,7 +12,7 @@
     <ion-list>
       <ion-item lines="full">
         <ion-label position="floating">Description</ion-label>
-        <ion-input [(ngModel)]="description" name="description" type="text"></ion-input>
+        <ion-input [(ngModel)]="description" name="description" type="text" #nameCtrl="ngModel"></ion-input>
       </ion-item>
       <ion-item [hidden]="lostForm.controls.description && (lostForm.controls.description.valid || (lostForm.controls.description.pristine && !isSubmitted))">
         <ion-text color="danger">Description obligatoire</ion-text>

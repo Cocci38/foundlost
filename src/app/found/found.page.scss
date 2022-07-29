@@ -17,5 +17,17 @@ ion-item {
     border-radius: 10px;
     color: rgb(23,140,164);
 }
+.error {
+    color: rgb(238, 94, 113);
+}
+.toast-custom-class {
+    --color: #F9F7F0;
+    // --border-color:#000000;
+    --border-radius: 10px;
+    --border-style: solid;
+    --border-width: 1px;    
+    background: linear-gradient(74deg, rgba(0, 165, 138,1) 13%, #2dd6ba 83%);
+    --button-color: #F9F7F0;
+}
 
 
