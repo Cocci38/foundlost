@@ -74,6 +74,25 @@ export class LostPage implements OnInit {
   //     toast.present();
   //   });
   // }
+  async valide() {
+    if (this.lostForm.valid) {
+      let toast = await this.toastController.create({
+        message: "Demande envoyée",
+        duration: 3000,
+        color: "success",
+        position: "middle"
+      })
+      toast.present();
+    } else {
+      let toast = await this.toastController.create({
+        message: "Demande non envoyée",
+        duration: 3000,
+        color: "danger",
+        position: "middle"
+      })
+      toast.present();
+    }
+  }
   submitForm() {
     this.isSubmitted = true;
     if (!this.lostForm.valid) {

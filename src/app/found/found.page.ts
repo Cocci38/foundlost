@@ -18,7 +18,7 @@ export class FoundPage implements OnInit {
   lastname: string;
   email: string;
   isSubmitted = false;
-  constructor(public apiService: UserService, public formBuilder: FormBuilder, public toastController: ToastController) {
+  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController) {
   }
 
   ngOnInit() {
@@ -41,39 +41,26 @@ export class FoundPage implements OnInit {
   get errorControl() {
     return this.foundForm.controls;
   }
-  // valide() {
-  //   try {
-  //     this.toastController.dismiss().then(() => {
-  //     }).catch(() => {
-  //     }).finally(() => {
-  //       console.log('Closed')
-  //     });
-  //   } catch(e) {}
-  //   this.toastController.create({
-  //     header: '',
-  //     message: 'Demande envoyée',
-  //     position: 'bottom',
-  //     cssClass: 'toast-custom-class',
-  //     buttons: [
-  //       {
-  //         side: 'end',
-  //         icon: '',
-  //         handler: () => {
-  //           console.log('');
-  //         }
-  //       }, {
-  //         side: 'end',
-  //         text: 'Close',
-  //         role: 'cancel',
-  //         handler: () => {
-  //           console.log('');
-  //         }
-  //       }
-  //     ]
-  //   }).then((toast) => {
-  //     toast.present();
-  //   });
-  // }
+  async valide() {
+    if (this.foundForm.valid) {
+      let toast = await this.toastController.create({
+        message: "Demande envoyée",
+        duration: 3000,
+        color: "success",
+        position: "middle"
+      })
+      toast.present();
+    } else {
+      let toast = await this.toastController.create({
+        message: "Demande non envoyée",
+        duration: 3000,
+        color: "danger",
+        position: "middle"
+      })
+      toast.present();
+    }
+  }
+
   submitForm() {
     this.isSubmitted = true;
     if (!this.foundForm.valid) {

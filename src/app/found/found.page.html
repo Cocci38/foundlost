@@ -64,13 +64,13 @@
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
         L'email doit comporter au moins 3 caractères.
       </span>
-      <ion-item *ngIf="isSubmitted && foundForm.valid " class="valid">
+      <!-- <ion-item *ngIf="isSubmitted && foundForm.valid " class="valid">
         <ion-text color="success">Demande envoyée</ion-text>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block">Envoyer</ion-button>
+        <ion-button type="submit" (click)="valide()" expand="block">Envoyer</ion-button>
       </ion-col>
     </ion-row>
   </form>
