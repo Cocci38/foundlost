@@ -23,7 +23,7 @@ export class LostPage implements OnInit {
 
   ngOnInit() {
     this.lostForm = this.formBuilder.group({
-      status: ['1'],
+      status: ['0'],
       description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
       date: [null, Validators.required],
       location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
