@@ -28,12 +28,12 @@ export class UserService {
 
   // Delete item by id
   deleteViewData(id: string) {
-    // console.log('coucou');
+    // console.log('Je passe par là');
     return this.http.get('http://localhost/ionicserver/manage-data.php?key=delete&id='+ id);
   }
 
   updateViewData(id: string) {
-    // console.log('coucou');
+    // console.log('Je passe par là');
     return this.http.get('http://localhost/ionicserver/manage-data.php?key=update&id='+ id);
   }
   // getEntry(data: any) {

@@ -14,6 +14,8 @@ export class SignUpPage implements OnInit {
   user_email: string;
   password: string;
   isSubmitted = false;
+  isConnect = false;
+  isInscrire = false;
 
   constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController) { }
 
@@ -26,6 +28,16 @@ export class SignUpPage implements OnInit {
   }
   get errorControl() {
     return this.signUpForm.controls;
+  }
+  connect() {
+    console.log('connection');
+    
+    this.isConnect = true;
+  }
+  inscrire() {
+    console.log('inscription');
+    
+    this.isInscrire = true;
   }
   async valide() {
     if (this.signUpForm.valid) {

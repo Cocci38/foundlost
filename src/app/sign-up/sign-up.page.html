@@ -5,43 +5,81 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
-    <ion-list>
-      <ion-item lines="full">
-        <ion-label position="floating">Prénom</ion-label>
-        <ion-input formControlName="username" name="username" type="text"></ion-input>
-      </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
-        Le prénom est requis.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
-        Le prénom doit comporter au moins 3 caractères.
-      </span>
-      <ion-item lines="full">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input formControlName="user_email" name="user_email" type="user_email"></ion-input>
-      </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.required">
-        L'email est requis.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.pattern">
-        L'email doit comporter au moins 3 caractères.
-      </span>
-      <ion-item lines="full">
-        <ion-label position="floating">Mot de passe</ion-label>
-        <ion-input formControlName="password" name="password" type="text"></ion-input>
-      </ion-item>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
-        Le nom est requis.
-      </span>
-      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
-        Le nom doit comporter au moins 3 caractères.
-      </span>
-    </ion-list>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" (click)="valide()" expand="block">Envoyer</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+  <div *ngIf="!isInscrire && !isConnect">
+    <ion-button type="submit" expand="block" (click)="connect()">Se connecter</ion-button>
+    <ion-button type="submit" expand="block" (click)="inscrire()">S'inscrire</ion-button>
+  </div>
+  <div *ngIf="isInscrire && !isConnect">
+    <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input formControlName="username" name="username" type="text"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+          Le prénom est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+          Le prénom doit comporter au moins 3 caractères.
+        </span>
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="user_email" name="user_email" type="user_email"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.required">
+          L'email est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.pattern">
+          L'email doit comporter au moins 3 caractères.
+        </span>
+        <ion-item lines="full">
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input formControlName="password" name="password" type="text"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Le nom est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+          Le nom doit comporter au moins 3 caractères.
+        </span>
+      </ion-list>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" (click)="valide()" expand="block">S'incrire</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+
+  <div *ngIf="isConnect && !isInscrire">
+    <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
+      <ion-list>
+        <ion-item lines="full">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input formControlName="user_email" name="user_email" type="user_email"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.required">
+          L'email est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.pattern">
+          L'email doit comporter au moins 3 caractères.
+        </span>
+        <ion-item lines="full">
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input formControlName="password" name="password" type="text"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+          Le nom est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
+          Le nom doit comporter au moins 3 caractères.
+        </span>
+      </ion-list>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" (click)="valide()" expand="block">Se connecter</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
 </ion-content>
