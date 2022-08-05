@@ -12,26 +12,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignUpPage implements OnInit {
   signUpForm: FormGroup;
-  loginForm: FormGroup;
   username: string;
   user_email: string;
   password: string;
+  loginForm: FormGroup;
   isSubmitted = false;
   isConnect = false;
   isInscrire = false;
   isConnexion = false;
-  loginData = {
-    username: '',
-    user_email: '',
-    password: ''
-  };
 
   constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router, public http : HttpClient) { 
-    this.loginForm = new FormGroup({
-      username: new FormControl(),
-      user_email: new FormControl(),
-      password: new FormControl()
-    });
   }
 
   ngOnInit() {
@@ -47,7 +37,7 @@ export class SignUpPage implements OnInit {
     });
   }
   get errorControl() {
-    return this.loginForm.controls;
+    return this.signUpForm.controls && this.loginForm.controls;
   }
   connect() {
     console.log('connection');
@@ -109,30 +99,23 @@ export class SignUpPage implements OnInit {
     }
     this.signUpForm.reset();
   }
+
   submitLoginForm() {
     this.isSubmitted = true;
-    if (!this.loginForm.valid) {
-      console.log('Please provide all the required values!');
-      return false;
-    } else {
-      // console.log(this.loginForm.value)
+    if (this.loginForm.valid) {
+      this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
+        console.log("SUCCES ===", res);
+        if (res == true) {
+          this.router.navigateByUrl("/home");
+        } else {
+          this.valide();
+        }
+      });
       this.isSubmitted = false;
+    } else {
+      console.log('Le formulaire n\'est pas valide');
+      return false;
     }
-    // if (this.loginForm.valid) {
-      this.readAPI('http://localhost/ionicserver/manage-data.php?key=login').subscribe((data) => {
-      // this.router.navigateByUrl('/home');
-      // this.loginData.username = data['username'];
-      this.loginData.username = data['username'];
-      this.loginData.user_email = data['user_email'];
-      this.loginData.password = data['password'];
-      console.log(this.loginData);
-      
-    });
-    // }
     this.loginForm.reset();
   }
-  readAPI(URL: string) {
-    return this.http.get(URL);
-  }
-
 }
