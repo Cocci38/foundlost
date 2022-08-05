@@ -28,7 +28,7 @@ export class SignUpPage implements OnInit {
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
       user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{8,}$')]]
     });
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
@@ -49,23 +49,23 @@ export class SignUpPage implements OnInit {
     this.isInscrire = true;
   }
   async valide() {
-    if (this.signUpForm.valid) {
-      let toast = await this.toastController.create({
-        message: "Demande envoyée",
-        duration: 3000,
-        color: "success",
-        position: "middle"
-      })
-      toast.present();
-    } else {
-      let toast = await this.toastController.create({
-        message: "Demande non envoyée",
-        duration: 3000,
-        color: "danger",
-        position: "middle"
-      })
-      toast.present();
-    }
+    // if (this.signUpForm.valid) {
+    //   let toast = await this.toastController.create({
+    //     message: "Demande envoyée",
+    //     duration: 3000,
+    //     color: "success",
+    //     position: "middle"
+    //   })
+    //   toast.present();
+    // } else {
+    //   let toast = await this.toastController.create({
+    //     message: "Demande non envoyée",
+    //     duration: 3000,
+    //     color: "danger",
+    //     position: "middle"
+    //   })
+    //   toast.present();
+    // }
     if (this.loginForm.valid) {
       let toast = await this.toastController.create({
         message: "Demande envoyée",
@@ -84,7 +84,15 @@ export class SignUpPage implements OnInit {
       toast.present();
     }
   }
-
+  async unique_email() {
+    let toast = await this.toastController.create({
+      message: "L'email existe déjà",
+      duration: 3000,
+      color: "danger",
+      position: "middle"
+    })
+    toast.present();
+  }
   submitSignUpForm() {
     this.isSubmitted = true;
     if (!this.signUpForm.valid) {
@@ -92,7 +100,21 @@ export class SignUpPage implements OnInit {
       return false;
     } else {
       console.log(this.signUpForm.value)
+      this.username = this.signUpForm.value['username'];
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
+        if (res == false) {
+          this.unique_email();
+        }
+        if (res == true) {
+          sessionStorage.setItem('username', this.username)
+          // console.log(this.loginForm.value['username']);
+          // console.log(sessionStorage.getItem('username'));
+          // sessionStorage.setItem('username', "")
+          this.router.navigateByUrl("/home");
+        } else {
+          sessionStorage.clear();
+          this.valide();
+        }
         console.log("SUCCES ===", res);
       })
       this.isSubmitted = false;
@@ -105,7 +127,7 @@ export class SignUpPage implements OnInit {
     if (this.loginForm.valid) {
       this.username = this.loginForm.value['username'];
       console.log(this.username);
-      
+
       // sessionStorage.setItem('username', this.loginForm.value['username'])
       // console.log(this.loginForm.value['username']);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
