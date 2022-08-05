@@ -1,14 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inscription</ion-title>
+    <ion-title>      Lost & Found
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="!isInscrire && !isConnect">
-    <ion-button type="submit" expand="block" (click)="connect()">Se connecter</ion-button>
-    <ion-button type="submit" expand="block" (click)="inscrire()">S'inscrire</ion-button>
-  </div>
+
   <div *ngIf="isInscrire && !isConnect">
     <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
       <ion-list>
@@ -51,9 +49,19 @@
     </form>
   </div>
 
-  <div *ngIf="isConnect && !isInscrire">
-    <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
+  <div *ngIf="!isInscrire">
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="form" novalidate>
       <ion-list>
+        <ion-item lines="full">
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input [hidden] formControlName="username" name="username" type="text"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
+          Le prénom est requis.
+        </span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
+          Le prénom doit comporter au moins 3 caractères.
+        </span>
         <ion-item lines="full">
           <ion-label position="floating">Email</ion-label>
           <ion-input formControlName="user_email" name="user_email" type="user_email"></ion-input>
@@ -77,9 +85,16 @@
       </ion-list>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="valide()" expand="block">Se connecter</ion-button>
+          <ion-button type="submit" (click)="valide()" expand="block" >Se connecter</ion-button>
         </ion-col>
       </ion-row>
     </form>
   </div>
+  <div *ngIf="!isInscrire">
+    <br>
+    <p class="item">OU</p>
+    <br>
+    <ion-button type="submit" (click)="inscrire()" expand="block">S'inscrire</ion-button>
+  </div>
+  
 </ion-content>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { ToastController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,14 +12,27 @@ import { ToastController } from '@ionic/angular';
 })
 export class SignUpPage implements OnInit {
   signUpForm: FormGroup;
+  loginForm: FormGroup;
   username: string;
   user_email: string;
   password: string;
   isSubmitted = false;
   isConnect = false;
   isInscrire = false;
+  isConnexion = false;
+  loginData = {
+    username: '',
+    user_email: '',
+    password: ''
+  };
 
-  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController) { }
+  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router, public http : HttpClient) { 
+    this.loginForm = new FormGroup({
+      username: new FormControl(),
+      user_email: new FormControl(),
+      password: new FormControl()
+    });
+  }
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
@@ -25,9 +40,14 @@ export class SignUpPage implements OnInit {
       user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]]
     });
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
+      user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]]
+    });
   }
   get errorControl() {
-    return this.signUpForm.controls;
+    return this.loginForm.controls;
   }
   connect() {
     console.log('connection');
@@ -36,11 +56,27 @@ export class SignUpPage implements OnInit {
   }
   inscrire() {
     console.log('inscription');
-    
     this.isInscrire = true;
   }
   async valide() {
     if (this.signUpForm.valid) {
+      let toast = await this.toastController.create({
+        message: "Demande envoyée",
+        duration: 3000,
+        color: "success",
+        position: "middle"
+      })
+      toast.present();
+    } else {
+      let toast = await this.toastController.create({
+        message: "Demande non envoyée",
+        duration: 3000,
+        color: "danger",
+        position: "middle"
+      })
+      toast.present();
+    }
+    if (this.loginForm.valid) {
       let toast = await this.toastController.create({
         message: "Demande envoyée",
         duration: 3000,
@@ -72,6 +108,31 @@ export class SignUpPage implements OnInit {
       this.isSubmitted = false;
     }
     this.signUpForm.reset();
+  }
+  submitLoginForm() {
+    this.isSubmitted = true;
+    if (!this.loginForm.valid) {
+      console.log('Please provide all the required values!');
+      return false;
+    } else {
+      // console.log(this.loginForm.value)
+      this.isSubmitted = false;
+    }
+    // if (this.loginForm.valid) {
+      this.readAPI('http://localhost/ionicserver/manage-data.php?key=login').subscribe((data) => {
+      // this.router.navigateByUrl('/home');
+      // this.loginData.username = data['username'];
+      this.loginData.username = data['username'];
+      this.loginData.user_email = data['user_email'];
+      this.loginData.password = data['password'];
+      console.log(this.loginData);
+      
+    });
+    // }
+    this.loginForm.reset();
+  }
+  readAPI(URL: string) {
+    return this.http.get(URL);
   }
 
 }

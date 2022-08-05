@@ -25,6 +25,9 @@ export class UserService {
   submitSignUpForm(data: any) {
     return this.http.post('http://localhost/ionicserver/manage-data.php?key=users', data);
   }
+  submitLoginForm(data: any) {
+    return this.http.post('http://localhost/ionicserver/manage-data.php?key=login', data);
+  }
 
   // Delete item by id
   deleteViewData(id: string) {
