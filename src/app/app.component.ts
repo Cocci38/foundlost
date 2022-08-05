@@ -10,6 +10,5 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   constructor(private router: Router, public apiService: UserService, public http : HttpClient) {
-    
   }
 }

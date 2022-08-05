@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ToastController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-found',
@@ -9,6 +10,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./found.page.scss'],
 })
 export class FoundPage implements OnInit {
+  sessionStorage: any;
+  username: string;
   foundForm: FormGroup;
   status: number;
   description: string;
@@ -18,7 +21,13 @@ export class FoundPage implements OnInit {
   lastname: string;
   email: string;
   isSubmitted = false;
-  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController) {
+  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router) {
+    if (!sessionStorage.getItem('username')) {
+      this.router.navigateByUrl("/sign-up");
+    } else {
+      this.username = sessionStorage.getItem('username');
+      console.log(sessionStorage.getItem('username'));
+    }
   }
 
   ngOnInit() {

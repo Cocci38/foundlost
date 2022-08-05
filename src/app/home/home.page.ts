@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  sessionStorage: any;
+  username: string;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    if (!sessionStorage.getItem('username')) {
+      this.router.navigateByUrl("/sign-up");
+    } else {
+      this.username = sessionStorage.getItem('username');
+      console.log(sessionStorage.getItem('username'));
+    }
 
-  constructor() {}
+  }
+  disconnect() {
+      sessionStorage.removeItem('username');
+      this.router.navigateByUrl("/sign-up");
+  }
+    
 
 }

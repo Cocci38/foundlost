@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-foundlist',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./foundlist.page.scss'],
 })
 export class FoundlistPage implements OnInit {
+  sessionStorage: any;
+  username: string;
   bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
   entryData = [];
-  constructor(public http : HttpClient) { 
+  constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router) { 
+    if (!sessionStorage.getItem('username')) {
+      this.router.navigateByUrl("/sign-up");
+    } else {
+      this.username = sessionStorage.getItem('username');
+      console.log(sessionStorage.getItem('username'));
+    }
     this.getEntry();
   }
   getEntry() {
@@ -29,6 +38,10 @@ export class FoundlistPage implements OnInit {
       }
     });
   }
+  disconnect() {
+    sessionStorage.removeItem('username');
+    this.router.navigateByUrl("/sign-up");
+}
   readAPI (URL: string) {
     return this.http.get(URL);
   }

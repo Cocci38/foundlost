@@ -21,7 +21,7 @@ export class SignUpPage implements OnInit {
   isInscrire = false;
   isConnexion = false;
 
-  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router, public http : HttpClient) { 
+  constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router, public http: HttpClient) {
   }
 
   ngOnInit() {
@@ -41,7 +41,7 @@ export class SignUpPage implements OnInit {
   }
   connect() {
     console.log('connection');
-    
+
     this.isConnect = true;
   }
   inscrire() {
@@ -103,14 +103,26 @@ export class SignUpPage implements OnInit {
   submitLoginForm() {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
+      this.username = this.loginForm.value['username'];
+      console.log(this.username);
+      
+      // sessionStorage.setItem('username', this.loginForm.value['username'])
+      // console.log(this.loginForm.value['username']);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
         if (res == true) {
+          sessionStorage.setItem('username', this.username)
+          // console.log(this.loginForm.value['username']);
+          // console.log(sessionStorage.getItem('username'));
+          // sessionStorage.setItem('username', "")
           this.router.navigateByUrl("/home");
         } else {
+          sessionStorage.clear();
           this.valide();
         }
       });
+      // sessionStorage.clear();
+
       this.isSubmitted = false;
     } else {
       console.log('Le formulaire n\'est pas valide');
