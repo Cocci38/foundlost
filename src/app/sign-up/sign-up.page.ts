@@ -41,48 +41,11 @@ export class SignUpPage implements OnInit {
   }
   connect() {
     console.log('connection');
-
     this.isConnect = true;
   }
   inscrire() {
     console.log('inscription');
     this.isInscrire = true;
-  }
-  async valide() {
-    // if (this.signUpForm.valid) {
-    //   let toast = await this.toastController.create({
-    //     message: "Demande envoyée",
-    //     duration: 3000,
-    //     color: "success",
-    //     position: "middle"
-    //   })
-    //   toast.present();
-    // } else {
-    //   let toast = await this.toastController.create({
-    //     message: "Demande non envoyée",
-    //     duration: 3000,
-    //     color: "danger",
-    //     position: "middle"
-    //   })
-    //   toast.present();
-    // }
-    if (this.loginForm.valid) {
-      let toast = await this.toastController.create({
-        message: "Demande envoyée",
-        duration: 3000,
-        color: "success",
-        position: "middle"
-      })
-      toast.present();
-    } else {
-      let toast = await this.toastController.create({
-        message: "Demande non envoyée",
-        duration: 3000,
-        color: "danger",
-        position: "middle"
-      })
-      toast.present();
-    }
   }
   async unique_email() {
     let toast = await this.toastController.create({
@@ -93,32 +56,49 @@ export class SignUpPage implements OnInit {
     })
     toast.present();
   }
+  async singUpClear() {
+    let toast = await this.toastController.create({
+      message: "Votre compte a bien été créée",
+      duration: 3000,
+      color: "success",
+      position: "middle"
+    })
+    toast.present();
+  }
+  async loginClear() {
+    let toast = await this.toastController.create({
+      message: "L'email, le nom d'utilisateur ou le mot de passe est erroné",
+      duration: 3000,
+      color: "danger",
+      position: "middle"
+    })
+    toast.present();
+  }
   submitSignUpForm() {
     this.isSubmitted = true;
-    if (!this.signUpForm.valid) {
-      console.log('Please provide all the required values!');
-      return false;
-    } else {
-      console.log(this.signUpForm.value)
+    if (this.signUpForm.valid) {
+      //console.log(this.signUpForm.value)
       this.username = this.signUpForm.value['username'];
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
+        console.log("SUCCES ===", res);
         if (res == false) {
           this.unique_email();
         }
         if (res == true) {
-          sessionStorage.setItem('username', this.username)
-          // console.log(this.loginForm.value['username']);
-          // console.log(sessionStorage.getItem('username'));
-          // sessionStorage.setItem('username', "")
+          sessionStorage.setItem('username', this.username);
           this.router.navigateByUrl("/home");
+          this.singUpClear();
         } else {
           sessionStorage.clear();
-          this.valide();
         }
-        console.log("SUCCES ===", res);
-      })
+
+      });
       this.isSubmitted = false;
+    } else {
+      console.log('Le formulaire n\'est pas valide');
+      return false;
     }
+
     this.signUpForm.reset();
   }
 
@@ -127,24 +107,17 @@ export class SignUpPage implements OnInit {
     if (this.loginForm.valid) {
       this.username = this.loginForm.value['username'];
       console.log(this.username);
-
-      // sessionStorage.setItem('username', this.loginForm.value['username'])
-      // console.log(this.loginForm.value['username']);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
         if (res == true) {
           sessionStorage.setItem('username', this.username)
-          // console.log(this.loginForm.value['username']);
-          // console.log(sessionStorage.getItem('username'));
-          // sessionStorage.setItem('username', "")
           this.router.navigateByUrl("/home");
-        } else {
+        } 
+        if (res == false) {
           sessionStorage.clear();
-          this.valide();
+          this.loginClear();
         }
       });
-      // sessionStorage.clear();
-
       this.isSubmitted = false;
     } else {
       console.log('Le formulaire n\'est pas valide');

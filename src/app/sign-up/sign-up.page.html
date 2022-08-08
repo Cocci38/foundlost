@@ -12,7 +12,7 @@
       <ion-list>
         <ion-item lines="full">
           <ion-label position="floating">Prénom</ion-label>
-          <ion-input formControlName="username" name="username" type="text"></ion-input>
+          <ion-input [hidden] formControlName="username" name="username" type="text"></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
           Le prénom est requis.
@@ -28,7 +28,7 @@
           L'email est requis.
         </span>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.pattern">
-          L'email doit comporter au moins 3 caractères.
+          L'email n'est pas correct.
         </span>
         <ion-item lines="full">
           <ion-label position="floating">Mot de passe</ion-label>
@@ -43,7 +43,7 @@
       </ion-list>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="valide()" expand="block">S'incrire</ion-button>
+          <ion-button type="submit" expand="block">S'incrire</ion-button>
         </ion-col>
       </ion-row>
     </form>
@@ -70,7 +70,7 @@
           L'email est requis.
         </span>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.user_email.errors?.pattern">
-          L'email doit comporter au moins 3 caractères.
+          L'email n'est pas correct.
         </span>
         <ion-item lines="full">
           <ion-label position="floating">Mot de passe</ion-label>
@@ -85,7 +85,7 @@
       </ion-list>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="valide()" expand="block" >Se connecter</ion-button>
+          <ion-button type="submit" expand="block" >Se connecter</ion-button>
         </ion-col>
       </ion-row>
     </form>
