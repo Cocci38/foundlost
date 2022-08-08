@@ -19,12 +19,11 @@ export class HomePage {
       console.log(sessionStorage.getItem('username'));
     }
   }
-
   async account() {
     let toast = await this.toastController.create({
       message: "Vous êtes déconnecté",
       duration: 3000,
-      color: "danger",
+      color: "success",
       position: "middle"
     })
     toast.present();

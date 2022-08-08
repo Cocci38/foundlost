@@ -35,10 +35,10 @@
           <ion-input formControlName="password" name="password" type="text"></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
-          Le nom est requis.
+          Le mot de passe est requis.
         </span>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
-          Le nom doit comporter au moins 3 caractères.
+          Le mot de passe doit comporter au moins 8 caractères.
         </span>
       </ion-list>
       <ion-row>
@@ -77,10 +77,10 @@
           <ion-input formControlName="password" name="password" type="text"></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
-          Le nom est requis.
+          Le mot de passe est requis.
         </span>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
-          Le nom doit comporter au moins 3 caractères.
+          Le mot de passe doit comporter au moins 8 caractères.
         </span>
       </ion-list>
       <ion-row>

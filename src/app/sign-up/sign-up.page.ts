@@ -25,28 +25,38 @@ export class SignUpPage implements OnInit {
   }
 
   ngOnInit() {
+    // Pattern pour la sécurisation des formulaires
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
-      user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{8,}$')]]
+      user_email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
     });
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
       user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
     });
   }
+
+  // Pour afficher les erreurs :
   get errorControl() {
     return this.signUpForm.controls && this.loginForm.controls;
   }
+
+  // Fonction pour rendre visible ou invisible une partie de la page : 
+  // Pour afficher ou non le formulaire de connection
   connect() {
     console.log('connection');
     this.isConnect = true;
   }
+  // Pour afficher ou non le formulaire d'inscription
   inscrire() {
     console.log('inscription');
     this.isInscrire = true;
   }
+
+  // Toast : 
+  // Pour l'email unique
   async unique_email() {
     let toast = await this.toastController.create({
       message: "L'email existe déjà",
@@ -56,6 +66,7 @@ export class SignUpPage implements OnInit {
     })
     toast.present();
   }
+  // Pour l'inscription réussi
   async singUpClear() {
     let toast = await this.toastController.create({
       message: "Votre compte a bien été créée",
@@ -65,46 +76,54 @@ export class SignUpPage implements OnInit {
     })
     toast.present();
   }
-  async loginClear() {
+  // Si l'email est erroné
+  async loginError() {
     let toast = await this.toastController.create({
-      message: "L'email, le nom d'utilisateur ou le mot de passe est erroné",
+      message: "L'email est erroné",
       duration: 3000,
       color: "danger",
       position: "middle"
     })
     toast.present();
   }
+
+  // Validation des formulaires :
+  // D'inscription
   submitSignUpForm() {
     this.isSubmitted = true;
+    // Si le formulaire est valide
     if (this.signUpForm.valid) {
-      //console.log(this.signUpForm.value)
+      // On récupère le nom de l'utilisateur et on le stocke dans username (pour la session si fait après pas de récup possible)
       this.username = this.signUpForm.value['username'];
+      // On effectue la validation
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
+        // Si la réponse est false, l'email existe déjà donc pas de validation
         if (res == false) {
           this.unique_email();
         }
+        // Si la réponse est true, la validation fonctionne 
         if (res == true) {
+          // On récupère le nom d'utilisateur pour la session
           sessionStorage.setItem('username', this.username);
+          // On envoie l'utilisatuer sur la page home
           this.router.navigateByUrl("/home");
           this.singUpClear();
-        } else {
-          sessionStorage.clear();
         }
-
       });
       this.isSubmitted = false;
+    // Sinon le formulaire n'est pas valide
     } else {
       console.log('Le formulaire n\'est pas valide');
       return false;
     }
-
     this.signUpForm.reset();
   }
-
+  // De connexion
   submitLoginForm() {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
+      //console.log(this.loginForm.value)
       this.username = this.loginForm.value['username'];
       console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
@@ -112,10 +131,10 @@ export class SignUpPage implements OnInit {
         if (res == true) {
           sessionStorage.setItem('username', this.username)
           this.router.navigateByUrl("/home");
-        } 
+        }
         if (res == false) {
           sessionStorage.clear();
-          this.loginClear();
+          this.loginError();
         }
       });
       this.isSubmitted = false;
