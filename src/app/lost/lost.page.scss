@@ -1,11 +1,32 @@
+:root {
+    font-family: 'Catamaran&Dancing';
+}
 ion-toolbar {
     --background: rgb(23,140,164);
     --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
     --color: #F9F7F0;
-    text-align: center;
+    //text-align: center;
+    font-family: 'Catamaran&Dancing';
+    height: 80px;
+}
+ion-back-button {
+    margin-top: 20px;
+}
+ion-title {
+    margin-top: 20px;
+}
+.chip {
+    margin-top: 25px;
+    --background: #F9F7F0;
+    --color: rgb(23,140,164);
+    font-size: 15px;
+}
+.user {
+    color: rgb(23,140,164);
 }
 ion-content {
     --background: #e6f6f7;
+    --font-family: 'Catamaran&Dancing';
 }
 ion-button {
     --background: rgb(23,140,164);
@@ -20,12 +41,3 @@ ion-item {
 .error {
     color: rgb(238, 94, 113);
 }
-// /** For form invalid field for Ionic Angular*/
-// .ion-invalid.ion-touched ion-label {
-//     color: var(--ion-color-danger);
-// }
-
-// /** For form invalid field for Angular*/
-// input.ng-invalid.ng-touched{
-//     border: 1px solid red;
-// }

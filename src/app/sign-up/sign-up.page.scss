@@ -4,6 +4,10 @@ ion-toolbar {
     --color: #F9F7F0;
     text-align: center;
     font-family: 'Catamaran&Dancing';
+    height: 80px;
+}
+ion-title {
+    margin-top: 20px;
 }
 ion-content {
     --background: #e6f6f7;

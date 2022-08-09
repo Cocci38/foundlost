@@ -54,7 +54,7 @@
       <ion-list>
         <ion-item lines="full">
           <ion-label position="floating">Prénom</ion-label>
-          <ion-input [hidden] formControlName="username" name="username" type="text"></ion-input>
+          <ion-input formControlName="username" name="username" type="text"></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
           Le prénom est requis.

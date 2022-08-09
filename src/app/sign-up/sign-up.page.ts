@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignUpPage implements OnInit {
   signUpForm: FormGroup;
+  id_user: number;
   username: string;
   user_email: string;
   password: string;
@@ -27,6 +28,7 @@ export class SignUpPage implements OnInit {
   ngOnInit() {
     // Pattern pour la sécurisation des formulaires
     this.signUpForm = this.formBuilder.group({
+      id_user: [''],
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
       user_email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
@@ -79,7 +81,7 @@ export class SignUpPage implements OnInit {
   // Si l'email est erroné
   async loginError() {
     let toast = await this.toastController.create({
-      message: "L'email est erroné",
+      message: "L'email ou le mot de passe est erroné",
       duration: 3000,
       color: "danger",
       position: "bottom"
@@ -112,7 +114,7 @@ export class SignUpPage implements OnInit {
         }
       });
       this.isSubmitted = false;
-    // Sinon le formulaire n'est pas valide
+      // Sinon le formulaire n'est pas valide
     } else {
       console.log('Le formulaire n\'est pas valide');
       return false;
@@ -129,17 +131,18 @@ export class SignUpPage implements OnInit {
       console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
-        if (res == true) {
+        if (res) {
           sessionStorage.setItem('username', this.username);
           sessionStorage.setItem('user_email', this.user_email);
+          sessionStorage.setItem('id_user', res['id_user']);
           this.router.navigateByUrl("/home");
         }
-        if (res == false) {
-          sessionStorage.clear();
+        if (res == null) {
           this.loginError();
         }
       });
       this.isSubmitted = false;
+      this.loginError();
     } else {
       console.log('Le formulaire n\'est pas valide');
       return false;

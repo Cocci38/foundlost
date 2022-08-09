@@ -35,6 +35,7 @@ export class HomePage {
     // On supprime la session (username et user_email)
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('user_email');
+    sessionStorage.removeItem('id_user');
     // On redirige vers la page de connexion
     this.router.navigateByUrl("/sign-up");
     // On lance le toat de déconnexion réussi
