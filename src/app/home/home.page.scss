@@ -33,34 +33,61 @@
 ion-content {
   --background: #e6f6f7;
 }
-.telescope {
-  font-size: 144px;
-}
 ion-toolbar {
   --background: rgb(23,140,164);
   --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
   --color: #F9F7F0;
-  text-align: center;
   font-family: 'Catamaran&Dancing';
+  height: 80px;
+}
+ion-title {
+  margin-top: 20px;
+}
+.disconnect {
+  margin-top: 20px;
+  cursor: pointer;
+  color: #F9F7F0;
+}
+.chip {
+  margin-top: 25px;
+  --background: #F9F7F0;
+  --color: rgb(23,140,164);
+  font-size: 15px;
+}
+.user {
+  color: rgb(23,140,164);
+}
+.img-container {
+  width: auto;
+}
+.logo {
+  display: block;
+  margin: auto;
+  margin-top: 5%;
+  width: 40%;
+  background: #e6f6f7;
+  @media screen and (min-width: 800px) {
+    width: 20%;
+}
+}
+ion-list {
+  background: #e6f6f7;
+  margin-top: 20%;
+  @media screen and (min-width: 1024px) {
+    margin-top: 40%;
+}
 }
 .list {
   --background: rgb(23,140,164);
   --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
   --color: #F9F7F0;
 }
-ion-icon {
-  color: #F9F7F0;
+.chevron {
+  color: rgb(23,140,164);
 }
-ion-list {
-  background: #e6f6f7;
-}
+
 .route {
   color: rgb(10, 72, 85);
 }
-ion-img {
-  display: block;
-  margin: auto;
-  width: 40%;
-  margin-bottom: 20px;
-}
+
 

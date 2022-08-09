@@ -3,16 +3,21 @@
     <ion-title>
       Lost & Found
     </ion-title>
-    <ion-icon name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
+    <ion-chip class="chip" slot="end">
+      <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
+      <ion-label>{{username}}</ion-label>
+    </ion-chip>
+    <ion-icon class="disconnect" name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <div id="container">
-    <ion-img src="../../assets/Lost_and_found__1_-removebg-preview (1).png" alt="Logo Lost and found dans une loupe">
+  <div class="img-container">
+    <ion-img class="logo" src="../../assets/Lost_and_found__1_-removebg-preview (1).png"
+      alt="Logo Lost and found dans une loupe">
     </ion-img>
-    <!-- <ion-icon name="search" class="telescope"></ion-icon> -->
+  </div>
+  <div id="container">
     <ion-list>
       <ion-item class="list">Effectuez une déclaration : </ion-item>
       <ion-item routerLink="/lost" class="route">j'ai perdu un objet
@@ -30,12 +35,5 @@
       </ion-item>
     </ion-list>
   </div>
-    <ion-item>
-      <ion-label>{{username}}</ion-label>
-    </ion-item>
-
-
-
-
 
 </ion-content>

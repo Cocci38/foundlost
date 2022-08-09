@@ -62,7 +62,7 @@ export class SignUpPage implements OnInit {
       message: "L'email existe déjà",
       duration: 3000,
       color: "danger",
-      position: "middle"
+      position: "bottom"
     })
     toast.present();
   }
@@ -72,7 +72,7 @@ export class SignUpPage implements OnInit {
       message: "Votre compte a bien été créée",
       duration: 3000,
       color: "success",
-      position: "middle"
+      position: "bottom"
     })
     toast.present();
   }
@@ -82,7 +82,7 @@ export class SignUpPage implements OnInit {
       message: "L'email est erroné",
       duration: 3000,
       color: "danger",
-      position: "middle"
+      position: "bottom"
     })
     toast.present();
   }
@@ -125,11 +125,13 @@ export class SignUpPage implements OnInit {
     if (this.loginForm.valid) {
       //console.log(this.loginForm.value)
       this.username = this.loginForm.value['username'];
+      this.user_email = this.loginForm.value['user_email'];
       console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
         if (res == true) {
-          sessionStorage.setItem('username', this.username)
+          sessionStorage.setItem('username', this.username);
+          sessionStorage.setItem('user_email', this.user_email);
           this.router.navigateByUrl("/home");
         }
         if (res == false) {

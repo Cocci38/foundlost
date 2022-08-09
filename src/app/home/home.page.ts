@@ -19,18 +19,25 @@ export class HomePage {
       console.log(sessionStorage.getItem('username'));
     }
   }
+  // Toast de déconnexion réussi
   async account() {
     let toast = await this.toastController.create({
       message: "Vous êtes déconnecté",
       duration: 3000,
       color: "success",
-      position: "middle"
+      position: "bottom"
     })
     toast.present();
   }
+
+  // Fonction de déconnexion
   disconnect() {
+    // On supprime la session (username et user_email)
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('user_email');
+    // On redirige vers la page de connexion
     this.router.navigateByUrl("/sign-up");
+    // On lance le toat de déconnexion réussi
     this.account();
   }
 
