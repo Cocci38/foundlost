@@ -95,8 +95,9 @@ export class SignUpPage implements OnInit {
     this.isSubmitted = true;
     // Si le formulaire est valide
     if (this.signUpForm.valid) {
-      // On récupère le nom de l'utilisateur et on le stocke dans username (pour la session si fait après pas de récup possible)
+      // On récupère le nom de l'utilisateur et l'email et on le stocke (pour la session si fait après pas de récup possible)
       this.username = this.signUpForm.value['username'];
+      this.user_email = this.loginForm.value['user_email'];
       // On effectue la validation
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
@@ -108,6 +109,7 @@ export class SignUpPage implements OnInit {
         if (res == true) {
           // On récupère le nom d'utilisateur pour la session
           sessionStorage.setItem('username', this.username);
+          sessionStorage.setItem('user_email', this.user_email);
           // On envoie l'utilisatuer sur la page home
           this.router.navigateByUrl("/home");
           this.singUpClear();
@@ -128,21 +130,20 @@ export class SignUpPage implements OnInit {
       //console.log(this.loginForm.value)
       this.username = this.loginForm.value['username'];
       this.user_email = this.loginForm.value['user_email'];
-      console.log(this.username);
+      // console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
-        console.log("SUCCES ===", res);
+        // console.log("SUCCES ===", res);
         if (res) {
           sessionStorage.setItem('username', this.username);
           sessionStorage.setItem('user_email', this.user_email);
           sessionStorage.setItem('id_user', res['id_user']);
           this.router.navigateByUrl("/home");
         }
-        if (res == null) {
+        if (res == false) {
           this.loginError();
         }
       });
       this.isSubmitted = false;
-      this.loginError();
     } else {
       console.log('Le formulaire n\'est pas valide');
       return false;
