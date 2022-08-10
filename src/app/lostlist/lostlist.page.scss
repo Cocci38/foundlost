@@ -2,8 +2,29 @@ ion-toolbar {
     --background: rgb(23,140,164);
     --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
     --color: #F9F7F0;
-    text-align: center;
-    }
+    font-family: 'Catamaran&Dancing';
+    height: 80px;
+}
+ion-back-button {
+    margin-top: 20px;
+}
+ion-title {
+    margin-top: 20px;
+}
+.chip {
+    margin-top: 25px;
+    --background: #F9F7F0;
+    --color: rgb(23,140,164);
+    font-size: 15px;
+}
+.user {
+    color: rgb(23,140,164);
+}
+.disconnect {
+    margin-top: 20px;
+    cursor: pointer;
+    color: #F9F7F0;
+}
 ion-card{
     // border: solid 1px #178ca4;
     border-radius: 10px;

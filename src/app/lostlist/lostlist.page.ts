@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lostlist',
@@ -12,7 +13,7 @@ export class LostlistPage implements OnInit {
   username: string;
   bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
   entryData = [];
-  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, private toastController: ToastController) {
     if (!sessionStorage.getItem('username')) {
       this.router.navigateByUrl("/sign-up");
     } else {
@@ -44,10 +45,28 @@ export class LostlistPage implements OnInit {
 
     });
   }
+  // Toast de déconnexion réussi
+  async account() {
+    let toast = await this.toastController.create({
+      message: "Vous êtes déconnecté",
+      duration: 3000,
+      color: "success",
+      position: "bottom"
+    })
+    toast.present();
+  }
+
+  // Fonction de déconnexion
   disconnect() {
+    // On supprime la session (username et user_email)
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('user_email');
+    sessionStorage.removeItem('id_user');
+    // On redirige vers la page de connexion
     this.router.navigateByUrl("/sign-up");
-}
+    // On lance le toat de déconnexion réussi
+    this.account();
+  }
   readAPI(URL: string) {
     return this.http.get(URL);
   }

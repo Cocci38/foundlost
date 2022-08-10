@@ -7,6 +7,11 @@
       <ion-back-button defaultHref="/foundlist" text="Retour"></ion-back-button>
     </ion-buttons>
     <ion-title>{{viewData.description}}</ion-title>
+    <ion-chip class="chip" slot="end">
+      <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
+      <ion-label>{{username}}</ion-label>
+    </ion-chip>
+    <ion-icon class="disconnect" name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 

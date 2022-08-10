@@ -3,15 +3,17 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
     </ion-buttons>
-    <ion-title>J'ai perdu</ion-title>
+    <ion-title class="title">J'ai perdu</ion-title>
     <ion-chip class="chip" slot="end">
       <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
       <ion-label>{{username}}</ion-label>
     </ion-chip>
+    <ion-icon class="disconnect" name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-title class="title-form">Déclarer un objet perdu</ion-title>
   <form [formGroup]="lostForm" (ngSubmit)="submitForm()" class="form" novalidate>
     <ion-list>
       <ion-item lines="full" class="bg">

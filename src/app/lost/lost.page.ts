@@ -50,39 +50,7 @@ export class LostPage implements OnInit {
   get errorControl() {
     return this.lostForm.controls;
   }
-  // valide() {
-  //   try {
-  //     this.toastController.dismiss().then(() => {
-  //     }).catch(() => {
-  //     }).finally(() => {
-  //       console.log('Closed')
-  //     });
-  //   } catch(e) {}
-  //   this.toastController.create({
-  //     header: '',
-  //     message: 'Demande envoyée',
-  //     position: 'bottom',
-  //     cssClass: 'toast-custom-class',
-  //     buttons: [
-  //       {
-  //         side: 'end',
-  //         icon: '',
-  //         handler: () => {
-  //           console.log('');
-  //         }
-  //       }, {
-  //         side: 'end',
-  //         text: 'Close',
-  //         role: 'cancel',
-  //         handler: () => {
-  //           console.log('');
-  //         }
-  //       }
-  //     ]
-  //   }).then((toast) => {
-  //     toast.present();
-  //   });
-  // }
+
   async valide() {
     if (this.lostForm.valid) {
       let toast = await this.toastController.create({
@@ -102,6 +70,28 @@ export class LostPage implements OnInit {
       toast.present();
     }
   }
+    // Toast de déconnexion réussi
+    async account() {
+      let toast = await this.toastController.create({
+        message: "Vous êtes déconnecté",
+        duration: 3000,
+        color: "success",
+        position: "bottom"
+      })
+      toast.present();
+    }
+  
+    // Fonction de déconnexion
+    disconnect() {
+      // On supprime la session (username et user_email)
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('user_email');
+      sessionStorage.removeItem('id_user');
+      // On redirige vers la page de connexion
+      this.router.navigateByUrl("/sign-up");
+      // On lance le toat de déconnexion réussi
+      this.account();
+    }
   submitForm() {
     this.isSubmitted = true;
     if (!this.lostForm.valid) {

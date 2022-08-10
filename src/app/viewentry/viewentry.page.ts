@@ -24,10 +24,17 @@ export class ViewentryPage implements OnInit {
     lastname: '',
     email: ''
   };
+  username: string;
   constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) { 
     
     this.route.params.subscribe(params => {
       console.log('L\'id de la route est: ', params.id);
+      if (!sessionStorage.getItem('username')) {
+        this.router.navigateByUrl("/sign-up");
+      } else {
+        this.username = sessionStorage.getItem('username');
+        console.log(sessionStorage.getItem('username'));
+      }
       // this.bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id='+ params.id;
     });
   }

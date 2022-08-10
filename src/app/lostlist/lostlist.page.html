@@ -4,7 +4,11 @@
       <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
     </ion-buttons>
     <ion-title>Objets perdus</ion-title>
-    <ion-icon name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
+    <ion-chip class="chip" slot="end">
+      <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
+      <ion-label>{{username}}</ion-label>
+    </ion-chip>
+    <ion-icon class="disconnect" name="exit-outline" (click)="disconnect()" size="large" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -17,8 +21,8 @@
             <ion-icon name="eye" size="large"></ion-icon>
           </ion-item-option>
         </ion-item-options>
-        <ion-item  lines="none">
-          <ion-label >
+        <ion-item lines="none">
+          <ion-label>
             <h1>{{lost.description}}</h1>
             <p>{{lost.location}}</p>
             <p>{{lost.date}}</p>
