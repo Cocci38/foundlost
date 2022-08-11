@@ -2,7 +2,7 @@
 ion-toolbar {
     --background: rgb(23, 140, 164);
     --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
-    --color: #F9F7F0;
+    --color: rgb(255, 255, 255);
     font-family: 'Catamaran&Dancing';
     height: 80px;
 }
@@ -11,13 +11,13 @@ ion-back-button {
     margin-top: 20px;
 }
 
-.title {
+ion-title {
     margin-top: 20px;
 }
 
 .chip {
     margin-top: 25px;
-    --background: #F9F7F0;
+    --background: rgb(255, 255, 255);
     --color: rgb(23, 140, 164);
     font-size: 15px;
 }
@@ -29,7 +29,7 @@ ion-back-button {
 .disconnect {
     margin-top: 20px;
     cursor: pointer;
-    color: #F9F7F0;
+    color: rgb(255, 255, 255);
 }
 
 // ********************** Content **********************
@@ -42,7 +42,8 @@ ion-content {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    color: rgb(23, 140, 164);
+    font-size: x-large;
+    color: rgb(10, 72, 85);
 }
 
 ion-button {

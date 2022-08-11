@@ -1,45 +1,68 @@
+// ********************** Header **************************
 ion-toolbar {
-    --background: rgb(23,140,164);
-    --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
-    --color: #F9F7F0;
+    --background: rgb(23, 140, 164);
+    --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
+    --color: rgb(255, 255, 255);
     font-family: 'Catamaran&Dancing';
     height: 80px;
 }
+
 ion-back-button {
     margin-top: 20px;
 }
+
 ion-title {
     margin-top: 20px;
 }
+
 .chip {
     margin-top: 25px;
-    --background: #F9F7F0;
-    --color: rgb(23,140,164);
+    --background: rgb(255, 255, 255);
+    --color: rgb(23, 140, 164);
     font-size: 15px;
 }
+
 .user {
-    color: rgb(23,140,164);
+    color: rgb(23, 140, 164);
 }
+
 .disconnect {
     margin-top: 20px;
     cursor: pointer;
-    color: #F9F7F0;
+    color: rgb(255, 255, 255);
 }
-ion-card{
-    // border: solid 1px #178ca4;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px 1px rgba(9,171,181,0.2);
-    -webkit-box-shadow: 2px 2px 5px 1px rgba(9,171,181,0.2);
-    -moz-box-shadow: 2px 2px 5px 1px rgba(9,171,181,0.2);
-}
+
+// ********************** Content **********************
 ion-content {
     --background: #e6f6f7;
 }
+
+.title-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: x-large;
+    color: rgb(10, 72, 85);
+}
+
+ion-card {
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 1px rgba(9, 171, 181, 0.2);
+    -webkit-box-shadow: 2px 2px 5px 1px rgba(9, 171, 181, 0.2);
+    -moz-box-shadow: 2px 2px 5px 1px rgba(9, 171, 181, 0.2);
+}
+
 ion-item-option {
-    --background: rgb(23,140,164);
-    --background: linear-gradient(184deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+    --background: rgb(23, 140, 164);
+    --background: linear-gradient(184deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
     --color: #F9F7F0;
 }
-h1,p {
+
+h1 {
+    color: rgb(10, 72, 85);
+    font-size: large;
+}
+
+p {
     color: rgb(10, 72, 85);
 }

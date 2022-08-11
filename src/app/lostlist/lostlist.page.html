@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" text="Accueil"></ion-back-button>
     </ion-buttons>
-    <ion-title>Objets perdus</ion-title>
+    <!-- <ion-title>Objets perdus</ion-title> -->
     <ion-chip class="chip" slot="end">
       <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
       <ion-label>{{username}}</ion-label>
@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-title class="title-form">Liste des objets perdus</ion-title>
   <div *ngFor="let lost of entryData">
     <ion-card *ngIf="lost.status == 0">
       <ion-item-sliding>
