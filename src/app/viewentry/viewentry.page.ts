@@ -22,9 +22,11 @@ export class ViewentryPage implements OnInit {
     date: '',
     firstname: '',
     lastname: '',
-    email: ''
+    email: '',
+    users_id: ''
   };
   username: string;
+  id_user: string;
   constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) { 
     
     this.route.params.subscribe(params => {
@@ -33,7 +35,8 @@ export class ViewentryPage implements OnInit {
         this.router.navigateByUrl("/sign-up");
       } else {
         this.username = sessionStorage.getItem('username');
-        console.log(sessionStorage.getItem('username'));
+        this.id_user = sessionStorage.getItem('id_user');
+        // console.log(sessionStorage.getItem('username'));
       }
       // this.bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id='+ params.id;
     });
@@ -57,6 +60,7 @@ export class ViewentryPage implements OnInit {
       this.viewData.firstname = data['firstname'];
       this.viewData.lastname = data['lastname'];
       this.viewData.email = data['email'];
+      this.viewData.users_id = data['users_id'];
       // console.log(this.entryData[0].id );
     });
   }
