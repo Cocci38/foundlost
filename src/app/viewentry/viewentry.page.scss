@@ -1,7 +1,8 @@
+// ********************** Header **************************
 .nav {
     --background: rgb(23, 140, 164);
     --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
-    --color: #F9F7F0;
+    --color: rgb(255, 255, 255);
     font-family: 'Catamaran&Dancing';
     height: 80px;
 }
@@ -16,7 +17,7 @@ ion-title {
 
 .chip {
     margin-top: 25px;
-    --background: #F9F7F0;
+    --background: rgb(255, 255, 255);
     --color: rgb(23, 140, 164);
     font-size: 15px;
 }
@@ -28,20 +29,9 @@ ion-title {
 .disconnect {
     margin-top: 20px;
     cursor: pointer;
-    color: #F9F7F0;
+    color: rgb(255, 255, 255);
 }
-
-.succes {
-    margin-top: 10px;
-    text-align: center;
-    border-radius: 10px;
-    --background: rgb(23, 140, 164);
-    --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
-    --color: #F9F7F0;
-}
-
-
-
+// ********************** Content **********************
 ion-card {
     // border: solid 1px #178ca4;
     border-radius: 10px;
@@ -77,11 +67,20 @@ ion-segment-button {
     --background-hover: rgb(10, 72, 85);
 }
 
-.choix {
+.succes {
     margin-top: 10px;
-    --border-color: #e6f6f7;
+    text-align: center;
     border-radius: 10px;
+    --background: rgb(23, 140, 164);
+    --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
+    --color: #F9F7F0;
 }
+
+// .choix {
+//     margin-top: 10px;
+//     --border-color: #e6f6f7;
+//     border-radius: 10px;
+// }
 
 h1,
 p {

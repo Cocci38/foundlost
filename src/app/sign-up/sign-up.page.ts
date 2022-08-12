@@ -12,9 +12,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignUpPage implements OnInit {
   signUpForm: FormGroup;
-  id_user: number;
-  username: string;
-  user_email: string;
+  // id_user: number;
+  // username: string;
+  // user_email: string;
   password: string;
   loginForm: FormGroup;
   isSubmitted = false;
@@ -96,8 +96,8 @@ export class SignUpPage implements OnInit {
     // Si le formulaire est valide
     if (this.signUpForm.valid) {
       // On récupère le nom de l'utilisateur et l'email et on le stocke (pour la session si fait après pas de récup possible)
-      this.username = this.signUpForm.value['username'];
-      this.user_email = this.loginForm.value['user_email'];
+      // this.username = this.signUpForm.value['username'];
+      // this.user_email = this.signUpForm.value['user_email'];
       // On effectue la validation
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
         console.log("SUCCES ===", res);
@@ -106,10 +106,11 @@ export class SignUpPage implements OnInit {
           this.unique_email();
         }
         // Si la réponse est true, la validation fonctionne 
-        if (res == true) {
+        if (res) {
           // On récupère le nom d'utilisateur pour la session
-          sessionStorage.setItem('username', this.username);
-          sessionStorage.setItem('user_email', this.user_email);
+          sessionStorage.setItem('username', res['username']);
+          sessionStorage.setItem('user_email', res['user_email']);
+          sessionStorage.setItem('id_user', res['id_user']);
           // On envoie l'utilisatuer sur la page home
           this.router.navigateByUrl("/home");
           this.singUpClear();
@@ -128,14 +129,14 @@ export class SignUpPage implements OnInit {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
       //console.log(this.loginForm.value)
-      this.username = this.loginForm.value['username'];
-      this.user_email = this.loginForm.value['user_email'];
+      // this.username = this.loginForm.value['username'];
+      // this.user_email = this.loginForm.value['user_email'];
       // console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
         // console.log("SUCCES ===", res);
         if (res) {
-          sessionStorage.setItem('username', this.username);
-          sessionStorage.setItem('user_email', this.user_email);
+          sessionStorage.setItem('username', res['username']);
+          sessionStorage.setItem('user_email', res['user_email']);
           sessionStorage.setItem('id_user', res['id_user']);
           this.router.navigateByUrl("/home");
         }

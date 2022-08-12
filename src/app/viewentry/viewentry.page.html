@@ -6,7 +6,7 @@
     <ion-buttons slot="start" *ngIf="viewData.status == 1">
       <ion-back-button defaultHref="/foundlist" text="Retour"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{viewData.description}}</ion-title>
+    <!-- <ion-title>{{viewData.description}}</ion-title> -->
     <ion-chip class="chip" slot="end">
       <ion-icon class="user" name="person-circle-outline" size="large"></ion-icon>
       <ion-label>{{username}}</ion-label>
@@ -22,8 +22,8 @@
         <ion-item lines="none">
           <ion-label>
             <h1>{{viewData.description}}</h1>
-            <p>à {{viewData.location}}</p>
-            <p>le {{viewData.date}}</p>
+            <p *ngIf="viewData.status == 0"> perdu à {{viewData.location}}, le : {{viewData.date}}</p>
+            <p *ngIf="viewData.status == 1"> trouvé à {{viewData.location}}, le : {{viewData.date}}</p>
             <p>Prénom : {{viewData.firstname}} </p>
             <p>Nom : {{viewData.lastname}}</p>
             <p>Email : {{viewData.email}}</p>

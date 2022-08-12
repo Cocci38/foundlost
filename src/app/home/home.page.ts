@@ -16,7 +16,7 @@ export class HomePage {
       this.router.navigateByUrl("/sign-up");
     } else {
       this.username = sessionStorage.getItem('username');
-      console.log(sessionStorage.getItem('username'));
+      // console.log(sessionStorage.getItem('username'));
     }
   }
   // Toast de déconnexion réussi
