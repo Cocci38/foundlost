@@ -11,9 +11,14 @@ import { ToastController } from '@ionic/angular';
 export class FoundlistPage implements OnInit {
   sessionStorage: any;
   username: string;
+  // On stocke dans bdUrl l'URL du serveur backend
   bdUrl = 'http://localhost/ionicserver/retrieve-data.php';
+  // On crée le tableau entryData pour pouvoir stocker les données
   entryData = [];
-  constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router, private toastController: ToastController) { 
+
+  // On récupère les services par injection de dépendance
+  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, private toastController: ToastController) {
+    // Si il n'y a pas de session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètres de session pour s'en servir plus loin
     if (!sessionStorage.getItem('username')) {
       this.router.navigateByUrl("/sign-up");
     } else {
@@ -22,10 +27,12 @@ export class FoundlistPage implements OnInit {
     }
     this.getEntry();
   }
+  // Fonction pour lire les données qui arrive du serveur
   getEntry() {
     this.readAPI(this.bdUrl).subscribe((data) => {
-      
-      for (let i = 0; i<Object.keys(data).length; i++) {
+      // On fait une boucle pour parcourir les données qui arrive du serveur
+      for (let i = 0; i < Object.keys(data).length; i++) {
+        // On les stocke dans le tableau entryData
         this.entryData[i] = {
           "id": data[i].id_object,
           "status": data[i].status,
@@ -52,7 +59,7 @@ export class FoundlistPage implements OnInit {
 
   // Fonction de déconnexion
   disconnect() {
-    // On supprime la session (username et user_email)
+    // On supprime la session (username, user_email et id_user)
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('user_email');
     sessionStorage.removeItem('id_user');
@@ -61,7 +68,8 @@ export class FoundlistPage implements OnInit {
     // On lance le toat de déconnexion réussi
     this.account();
   }
-  readAPI (URL: string) {
+  // On retourner la réponse de l'url dans un objet JSON
+  readAPI(URL: string) {
     return this.http.get(URL);
   }
   ngOnInit() {

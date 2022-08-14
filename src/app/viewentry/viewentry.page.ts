@@ -1,7 +1,8 @@
+// Importation des modules
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService} from '../api/user.service';
+import { UserService } from '../api/user.service';
 
 
 @Component({
@@ -10,9 +11,7 @@ import { UserService} from '../api/user.service';
   styleUrls: ['./viewentry.page.scss'],
 })
 export class ViewentryPage implements OnInit {
-  
-  // bdUrl: any;
-  // view: any;
+  // Propriétés : 
   viewId: any;
   viewData = {
     id: '',
@@ -27,10 +26,11 @@ export class ViewentryPage implements OnInit {
   };
   username: string;
   id_user: string;
-  constructor(public http : HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) { 
-    
+  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) {
+
     this.route.params.subscribe(params => {
       console.log('L\'id de la route est: ', params.id);
+      // Si il n'y a pas de session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètres de session pour s'en servir plus loin
       if (!sessionStorage.getItem('username')) {
         this.router.navigateByUrl("/sign-up");
       } else {
@@ -42,16 +42,19 @@ export class ViewentryPage implements OnInit {
     });
   }
 
+  // Méthodes : 
   ngOnInit() {
     // this.viewId = this.route.snapshot.paramMap.get('id');
     // console.log(this.viewId);
     this.getEntry();
   }
-
+  // Fonction pour lire les données qui arrive du serveur
   getEntry() {
+    // On récupère l'id de l'objet et on le stocke dans viewId pour l'injecter dans la route 
     this.viewId = this.route.snapshot.params['id'];
     // console.log(this.viewId);
-    this.readAPI('http://localhost/ionicserver/retrieve-data.php?id='+this.viewId).subscribe((data) => {
+    // On lit les données et on les stockes dans viewData
+    this.readAPI('http://localhost/ionicserver/retrieve-data.php?id=' + this.viewId).subscribe((data) => {
       this.viewData.id = data['id_object'];
       this.viewData.status = data['status'];
       this.viewData.description = data['description'];
@@ -64,25 +67,28 @@ export class ViewentryPage implements OnInit {
       // console.log(this.entryData[0].id );
     });
   }
+
+  // Fonction pour supprimer un objet
   delete(viewData: any) {
     this.apiService.deleteViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
-      if (delete(this.viewData.id)) {
+      if (delete (this.viewData.id)) {
         this.router.navigateByUrl("/home");
       }
       console.log(this.viewData.id);
-      
+
     });
     // viewData.resetForm();
   }
+  // Fonction pour modifier le status de l'objet
   update(viewData: any) {
     this.apiService.updateViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
       console.log(this.viewData.status);
-      
+
     });
   }
   readAPI(URL: string) {
     return this.http.get(URL);
-  }  
+  }
 }

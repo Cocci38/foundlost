@@ -20,6 +20,7 @@
         <ion-label position="floating">Description</ion-label>
         <ion-input formControlName="description" name="description" type="text"></ion-input>
       </ion-item>
+      <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans lost.page.ts -->
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
         La description est requise.
       </span>
@@ -34,6 +35,7 @@
         <ion-label position="floating">Lieu</ion-label>
         <ion-input formControlName="location" name="location" type="text"></ion-input>
       </ion-item>
+      <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans lost.page.ts -->
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.location.errors?.required">
         Le lieu est requis.
       </span>
@@ -44,6 +46,7 @@
         <ion-label position="floating">Prénom</ion-label>
         <ion-input formControlName="firstname" name="firstname" type="text"></ion-input>
       </ion-item>
+      <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans lost.page.ts -->
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.firstname.errors?.required">
         Le prénom est requis.
       </span>
@@ -54,6 +57,7 @@
         <ion-label position="floating">Nom</ion-label>
         <ion-input formControlName="lastname" name="lastname" type="text"></ion-input>
       </ion-item>
+      <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans lost.page.ts -->
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.lastname.errors?.required">
         Le nom est requis.
       </span>
@@ -64,6 +68,7 @@
         <ion-label position="floating">Email</ion-label>
         <ion-input formControlName="email" name="email" type="email"></ion-input>
       </ion-item>
+      <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans lost.page.ts -->
       <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
         L'email est requis.
       </span>

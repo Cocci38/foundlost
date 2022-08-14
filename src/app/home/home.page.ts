@@ -12,6 +12,7 @@ export class HomePage {
   username: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private toastController: ToastController) {
+    // Si il n'y a pas de session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètres de session pour s'en servir plus loin
     if (!sessionStorage.getItem('username')) {
       this.router.navigateByUrl("/sign-up");
     } else {

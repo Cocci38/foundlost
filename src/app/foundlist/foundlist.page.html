@@ -14,7 +14,9 @@
 
 <ion-content>
   <ion-title class="title-form">Liste des objets trouvés</ion-title>
+  <!-- On boucle pour parcourir les données et les affichées -->
   <div *ngFor="let found of entryData">
+    <!-- Condition pour afficher uniquement les objets avec un status = 1 -->
     <ion-card *ngIf="found.status == 1">
       <ion-item-sliding>
         <ion-item-options side="end">
