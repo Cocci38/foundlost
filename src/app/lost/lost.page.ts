@@ -23,6 +23,7 @@ export class LostPage implements OnInit {
   email: string;
   users_id: number;
   isSubmitted = false;
+  
   constructor(public apiService: UserService, public formBuilder: FormBuilder, public toastController: ToastController, private route: ActivatedRoute, private router: Router) {
 
     // Si il n'y a pas une session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètre de session pour s'en servir plus loin

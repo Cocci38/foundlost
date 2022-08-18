@@ -35,7 +35,7 @@
         </span>
         <ion-item lines="full">
           <ion-label position="floating">Mot de passe</ion-label>
-          <ion-input formControlName="password" name="password" type="text"></ion-input>
+          <ion-input formControlName="password" name="password" type="password"></ion-input>
         </ion-item>
         <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans sign-up.page.ts -->
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
@@ -81,7 +81,7 @@
         </span>
         <ion-item lines="full">
           <ion-label position="floating">Mot de passe</ion-label>
-          <ion-input formControlName="password" name="password" type="text"></ion-input>
+          <ion-input formControlName="password" name="password" type="password"></ion-input>
         </ion-item>
         <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans sign-up.page.ts -->
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
