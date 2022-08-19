@@ -9,6 +9,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  // Propriétés : 
   sessionStorage: any;
   username: string;
 
@@ -21,6 +22,7 @@ export class HomePage {
       // console.log(sessionStorage.getItem('username'));
     }
   }
+  // Méthodes : 
   // Toast de déconnexion réussi
   async account() {
     let toast = await this.toastController.create({

@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./found.page.scss'],
 })
 export class FoundPage implements OnInit {
+  // Propriétés : 
   sessionStorage: any;
   username: string;
   foundForm: FormGroup;
@@ -32,7 +33,7 @@ export class FoundPage implements OnInit {
       // console.log(sessionStorage.getItem('username'));
     }
   }
-
+  // Méthodes : 
   ngOnInit() {
     // Pattern pour la sécurisation du formulaire
     this.foundForm = this.formBuilder.group({
@@ -53,7 +54,7 @@ export class FoundPage implements OnInit {
   //   })
   // }
 
-  // Pour afficher les erreurs :
+  // Pour accéder au contrôle du formulaire directement via le template :
   get errorControl() {
     return this.foundForm.controls;
   }
@@ -126,7 +127,7 @@ export class FoundPage implements OnInit {
         }
       });
       // On repasse isSubmitted à false
-      this.isSubmitted = false;
+      // this.isSubmitted = false;
     }
     // On vide le formulaire
     this.foundForm.reset();

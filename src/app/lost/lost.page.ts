@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./lost.page.scss'],
 })
 export class LostPage implements OnInit {
+  // Propriétés : 
   sessionStorage: any;
   username: string;
   lostForm: FormGroup;
@@ -23,7 +24,7 @@ export class LostPage implements OnInit {
   email: string;
   users_id: number;
   isSubmitted = false;
-  
+
   constructor(public apiService: UserService, public formBuilder: FormBuilder, public toastController: ToastController, private route: ActivatedRoute, private router: Router) {
 
     // Si il n'y a pas une session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètre de session pour s'en servir plus loin
@@ -35,7 +36,7 @@ export class LostPage implements OnInit {
       // console.log(sessionStorage.getItem('id_user'));
     }
   }
-
+  // Méthodes : 
   ngOnInit() {
     // Pattern pour la sécurisation du formulaire
     this.lostForm = this.formBuilder.group({
@@ -56,7 +57,7 @@ export class LostPage implements OnInit {
   //   })
   // }
 
-  // Pour afficher les erreurs :
+  // Pour accéder au contrôle du formulaire directement via le template :
   get errorControl() {
     return this.lostForm.controls;
   }
@@ -128,7 +129,7 @@ export class LostPage implements OnInit {
         }
       });
       // On repasse isSubmitted à false
-      this.isSubmitted = false;
+      // this.isSubmitted = false;
     }
     // On vide le formulaire
     this.lostForm.reset();

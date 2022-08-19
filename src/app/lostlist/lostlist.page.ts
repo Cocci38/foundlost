@@ -10,6 +10,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./lostlist.page.scss'],
 })
 export class LostlistPage implements OnInit {
+  // Propriétés : 
   sessionStorage: any;
   username: string;
   // On stocke dans bdUrl l'URL du serveur backend
@@ -28,7 +29,7 @@ export class LostlistPage implements OnInit {
     }
     this.getEntry();
   }
-
+  // Méthodes : 
   ngOnInit() {
 
   }

@@ -10,6 +10,7 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./foundlist.page.scss'],
 })
 export class FoundlistPage implements OnInit {
+  // Propriétés : 
   sessionStorage: any;
   username: string;
   // On stocke dans bdUrl l'URL du serveur backend
@@ -28,6 +29,7 @@ export class FoundlistPage implements OnInit {
     }
     this.getEntry();
   }
+  // Méthodes : 
   // Fonction pour lire les données qui arrive du serveur
   getEntry() {
     this.readAPI(this.bdUrl).subscribe((data) => {
