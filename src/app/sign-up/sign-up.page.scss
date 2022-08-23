@@ -1,31 +1,66 @@
+// ******************************************************** Header ************************************************************
 ion-toolbar {
-    --background: rgb(23,140,164);
-    --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+    --background: rgb(23, 140, 164);
+    --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
     --color: #F9F7F0;
     text-align: center;
     font-family: 'Catamaran&Dancing';
     height: 80px;
 }
+
 ion-title {
     margin-top: 20px;
 }
+
 ion-content {
     --background: #e6f6f7;
 }
+
+.img-container {
+    width: auto;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    width: 40%;
+    background: #e6f6f7;
+
+    @media screen and (min-width: 800px) {
+        width: 20%;
+    }
+}
+
+ion-list {
+    background: #e6f6f7;
+}
+
 ion-item {
     border: solid 2px #e6f6f7;
     border-radius: 10px;
-    color: rgb(23,140,164);
+    color: rgb(23, 140, 164);
 }
+
 ion-button {
-    --background: rgb(23,140,164);
-    --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+    --background: rgb(23, 140, 164);
+    --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
     --color: #F9F7F0;
 }
+p {
+    text-align: center;
+    color: rgb(10, 72, 85);
+    a {
+        text-align: center;
+        color: rgb(23, 140, 164);
+    }
+}
+
 .item {
     text-align: center;
-    color: rgb(23,140,164);
+    color: rgb(23, 140, 164);
 }
+
 .error {
     color: rgb(238, 94, 113);
 }

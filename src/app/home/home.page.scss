@@ -1,37 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Dancing+Script:wght@500;600&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@100;400;500&display=swap');
-@font-face {
-  font-family: 'Catamaran&Dancing';
-  src: url('https://fonts.googleapis.com/css2?family=Catamaran&family=Dancing+Script:wght@500;600&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@100;400;500&display=swap');
-}
-#container {
-  text-align: center;
-  --color: #F9F7F0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+// @import url('https://fonts.googleapis.com/css2?family=Catamaran&family=Dancing+Script:wght@500;600&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@100;400;500&display=swap');
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+// @font-face {
+//   font-family: 'Catamaran&Dancing';
+//   src: url('https://fonts.googleapis.com/css2?family=Catamaran&family=Dancing+Script:wght@500;600&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@100;400;500&display=swap');
+// }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+// #container {
+//   text-align: center;
+//   --color: #F9F7F0;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
 
-  // color: #8c8c8c;
+// #container strong {
+//   font-size: 20px;
+//   line-height: 26px;
+// }
 
-  margin: 0;
-}
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
 
-#container a {
-  text-decoration: none;
-}
+//   // color: #8c8c8c;
 
-// ********************** Header **************************
+//   margin: 0;
+// }
+
+// #container a {
+//   text-decoration: none;
+// }
+
+// ******************************************************** Header ************************************************************
 ion-toolbar {
   --background: rgb(23, 140, 164);
   --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
@@ -64,40 +66,47 @@ ion-title {
   cursor: pointer;
   color: rgb(255, 255, 255);
 }
+
+// ******************************************************** Content ************************************************************
 ion-content {
   --background: #e6f6f7;
 }
+
 .img-container {
   width: auto;
 }
+
 .logo {
   display: block;
   margin: auto;
   margin-top: 5%;
   width: 40%;
   background: #e6f6f7;
+
   @media screen and (min-width: 800px) {
     width: 20%;
+  }
 }
-}
+
 ion-list {
   background: #e6f6f7;
   margin-top: 20%;
+
   @media screen and (min-width: 1024px) {
     margin-top: 40%;
+  }
 }
-}
+
 .list {
-  --background: rgb(23,140,164);
-  --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
+  --background: rgb(23, 140, 164);
+  --background: linear-gradient(74deg, rgba(23, 140, 164, 1) 13%, rgba(24, 183, 190, 1) 83%);
   --color: #F9F7F0;
 }
+
 .chevron {
-  color: rgb(23,140,164);
+  color: rgb(23, 140, 164);
 }
 
 .route {
   color: rgb(10, 72, 85);
 }
-
-
