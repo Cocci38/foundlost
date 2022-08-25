@@ -93,10 +93,10 @@ export class FoundPage implements OnInit {
 
   // Fonction de déconnexion
   disconnect() {
-    // On supprime la session (username, user_email et id_user)
+    // On supprime la session (username et id_user)
     sessionStorage.removeItem('username');
-    sessionStorage.removeItem('user_email');
     sessionStorage.removeItem('id_user');
+    sessionStorage.clear();
     // On redirige vers la page de connexion
     this.router.navigateByUrl("/sign-up");
     // On lance le toat de déconnexion réussi

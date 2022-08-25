@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../api/user.service';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ViewentryPage implements OnInit {
   };
   username: string;
   id_user: string;
-  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService) {
+  constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService, private toastController: ToastController) {
 
     this.route.params.subscribe(params => {
       console.log('L\'id de la route est: ', params.id);
@@ -40,6 +41,17 @@ export class ViewentryPage implements OnInit {
       }
       // this.bdUrl = 'http://localhost/ionicserver/retrieve-data.php?id='+ params.id;
     });
+  }
+
+  // Toast de déconnexion réussi
+  async account() {
+    let toast = await this.toastController.create({
+      message: "Vous êtes déconnecté",
+      duration: 3000,
+      color: "success",
+      position: "bottom"
+    })
+    toast.present();
   }
 
   // Méthodes : 
@@ -87,6 +99,17 @@ export class ViewentryPage implements OnInit {
       console.log(this.viewData.status);
 
     });
+  }
+  // Fonction de déconnexion
+  disconnect() {
+    // On supprime la session (username et id_user)
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('id_user');
+    sessionStorage.clear();
+    // On redirige vers la page de connexion
+    this.router.navigateByUrl("/sign-up");
+    // On lance le toat de déconnexion réussi
+    this.account();
   }
   readAPI(URL: string) {
     return this.http.get(URL);

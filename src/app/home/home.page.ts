@@ -36,10 +36,10 @@ export class HomePage {
 
   // Fonction de déconnexion
   disconnect() {
-    // On supprime la session (username et user_email)
+    // On supprime la session (username et id_user)
     sessionStorage.removeItem('username');
-    sessionStorage.removeItem('user_email');
     sessionStorage.removeItem('id_user');
+    sessionStorage.clear();
     // On redirige vers la page de connexion
     this.router.navigateByUrl("/sign-up");
     // On lance le toat de déconnexion réussi

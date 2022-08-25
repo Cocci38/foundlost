@@ -12,8 +12,11 @@ export class UserService {
     // On instancie le service
     this.headers = new HttpHeaders();
     // On définit les options de configuration et la CORS policy
+    // La sortie est de type JSON
     this.headers.append('Accept', 'application/json');
+    // Le corps de la requête est en JSON
     this.headers.append('Content-Type', 'application/json');
+    // * Pour recevoir toutes les requêtes, cela doit être modifier lors de la mise en production
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.headers.append('Access-Control-Allow-Headers', 'Content-Type');
   }

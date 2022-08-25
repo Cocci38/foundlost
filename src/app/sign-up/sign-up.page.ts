@@ -110,7 +110,7 @@ export class SignUpPage implements OnInit {
         if (res) {
           // On récupère le nom d'utilisateur, l'email et id_user pour la session
           sessionStorage.setItem('username', res['username']);
-          sessionStorage.setItem('user_email', res['user_email']);
+          // sessionStorage.setItem('user_email', res['user_email']);
           sessionStorage.setItem('id_user', res['id_user']);
           // On envoie l'utilisatuer sur la page home
           this.router.navigateByUrl("/home");
@@ -137,7 +137,6 @@ export class SignUpPage implements OnInit {
         // console.log("SUCCES ===", res);
         if (res) {
           sessionStorage.setItem('username', res['username']);
-          sessionStorage.setItem('user_email', res['user_email']);
           sessionStorage.setItem('id_user', res['id_user']);
           this.router.navigateByUrl("/home");
         }
