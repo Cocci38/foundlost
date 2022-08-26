@@ -14,10 +14,12 @@ export class UserService {
     // On définit les options de configuration et la CORS policy
     // La sortie est de type JSON
     this.headers.append('Accept', 'application/json');
-    // Le corps de la requête est en JSON
+    // Format des données envoyées
     this.headers.append('Content-Type', 'application/json');
-    // * Pour recevoir toutes les requêtes, cela doit être modifier lors de la mise en production
+    // Accès depuis n'importe quel site ou appareil (*)
+    // Cela doit être modifier lors de la mise en production
     this.headers.append('Access-Control-Allow-Origin', '*');
+    // Entêtes autorisées
     this.headers.append('Access-Control-Allow-Headers', 'Content-Type');
   }
 
