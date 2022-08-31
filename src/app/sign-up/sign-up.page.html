@@ -11,6 +11,7 @@
       alt="Logo Lost and found dans une loupe">
     </ion-img>
   </div>
+  
   <!-- Si isInscrire est cliqué et si isConnect n'est pas cliqué -->
   <div *ngIf="isInscrire && !isConnect">
     <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
@@ -62,17 +63,6 @@
   <div *ngIf="!isInscrire || isConnect">
     <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="form" novalidate>
       <ion-list>
-        <!-- <ion-item lines="full">
-          <ion-label position="floating">Prénom</ion-label>
-          <ion-input formControlName="username" name="username" type="text"></ion-input>
-        </ion-item> -->
-        <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans sign-up.page.ts -->
-        <!-- <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.required">
-          Le prénom est requis.
-        </span>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.username.errors?.pattern">
-          Le prénom doit comporter au moins 3 caractères.
-        </span> -->
         <ion-item lines="full">
           <ion-label position="floating">Email</ion-label>
           <ion-input formControlName="user_email" name="user_email" type="user_email"></ion-input>
@@ -104,12 +94,4 @@
     </form>
     <p>Pas encore de compte ? <a type="submit" (click)="inscrire()">S'inscrire</a> </p>
   </div>
-  <!-- Si isInscrire est cliqué et si isConnect n'est pas cliqué -->
-  <!-- <div *ngIf="!isInscrire">
-
-    <p class="item">OU</p>
-
-    <ion-button type="submit" (click)="inscrire()" expand="block">S'inscrire</ion-button>
-  </div> -->
-
 </ion-content>

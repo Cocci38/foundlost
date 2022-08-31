@@ -1,4 +1,4 @@
-// Importation des modules
+// Importation des dépendances
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';

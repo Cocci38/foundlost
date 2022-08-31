@@ -1,4 +1,4 @@
-// Importation des modules
+// Importation des dépendances
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
@@ -35,7 +35,6 @@ export class SignUpPage implements OnInit {
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
     });
     this.loginForm = this.formBuilder.group({
-      // username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
       user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
     });
@@ -108,9 +107,8 @@ export class SignUpPage implements OnInit {
         }
         // Si la réponse est true, la validation fonctionne 
         if (res) {
-          // On récupère le nom d'utilisateur, l'email et id_user pour la session
+          // On récupère le nom d'utilisateur et id_user pour la session
           sessionStorage.setItem('username', res['username']);
-          // sessionStorage.setItem('user_email', res['user_email']);
           sessionStorage.setItem('id_user', res['id_user']);
           // On envoie l'utilisatuer sur la page home
           this.router.navigateByUrl("/home");

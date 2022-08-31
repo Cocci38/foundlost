@@ -1,4 +1,4 @@
-// Importation des modules
+// Importation des dépendances
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../api/user.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -120,7 +120,10 @@ export class FoundPage implements OnInit {
         console.log("SUCCES ===", res);
         // Si la réponse est égale à true, on lance le toats valid
         if (res == true) {
+          // this.router.navigateByUrl("/foundlist");
+          this.isSubmitted = false;
           this.valide();
+          
         } else {
           // Sinon on envoie le toat invalid
           this.invalid();

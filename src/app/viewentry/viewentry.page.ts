@@ -1,10 +1,9 @@
-// Importation des modules
+// Importation des dépendances
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../api/user.service';
 import { ToastController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-viewentry',
