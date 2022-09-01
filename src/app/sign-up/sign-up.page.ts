@@ -42,7 +42,7 @@ export class SignUpPage implements OnInit {
 
   // Pour afficher les erreurs :
   get errorControl() {
-    return this.signUpForm.controls && this.loginForm.controls;
+    return this.signUpForm.controls || this.loginForm.controls;
   }
 
   // Fonction pour rendre visible ou invisible une partie de la page : 
@@ -50,11 +50,13 @@ export class SignUpPage implements OnInit {
   connect() {
     console.log('connection');
     this.isConnect = true;
+    this.isInscrire = false;
   }
   // Pour afficher ou non le formulaire d'inscription
   inscrire() {
     console.log('inscription');
     this.isInscrire = true;
+    this.isConnect = false;
   }
 
   // Toast : 
@@ -132,7 +134,7 @@ export class SignUpPage implements OnInit {
       // this.user_email = this.loginForm.value['user_email'];
       // console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
-        // console.log("SUCCES ===", res);
+        console.log("SUCCES ===", res);
         if (res) {
           sessionStorage.setItem('username', res['username']);
           sessionStorage.setItem('id_user', res['id_user']);
