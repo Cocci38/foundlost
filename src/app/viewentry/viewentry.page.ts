@@ -97,6 +97,7 @@ export class ViewentryPage implements OnInit {
       this.getEntry();
       console.log(this.viewData.status);
 
+      
     });
   }
   // Fonction de déconnexion

@@ -28,7 +28,7 @@
           <ion-label>
             <h1>{{found.description}}</h1>
             <p> à {{found.location}}</p>
-            <p>le : {{found.date}}</p>
+            <p>le : {{found.date | date: 'dd/MM/yyyy'}}</p>
           </ion-label>
         </ion-item>
       </ion-item-sliding>

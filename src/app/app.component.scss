@@ -3,10 +3,16 @@
     font-family: 'Catamaran&Dancing';
     src: url('https://fonts.googleapis.com/css2?family=Catamaran&family=Dancing+Script:wght@500;600&family=Lobster&family=Merriweather+Sans:wght@300;400&family=Montserrat:wght@100;400;500&display=swap');
 }
+ion-header {
+    font-family: 'Catamaran&Dancing';
+}
+ion-content {
+    font-family: 'Catamaran&Dancing';
+}
 ion-toolbar {
     --background: rgb(23,140,164);
     --background: linear-gradient(74deg, rgba(23,140,164,1) 13%, rgba(24,183,190,1) 83%);
     --color: #F9F7F0;
     text-align: center;
-    font-family: 'Catamaran&Dancing';
+    // font-family: 'Catamaran&Dancing';
     }

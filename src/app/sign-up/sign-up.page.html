@@ -17,7 +17,7 @@
     <form [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" class="form" novalidate>
       <ion-list>
         <ion-item lines="full">
-          <ion-label position="floating">Prénom</ion-label>
+          <ion-label position="floating">Nom d'utilisateur</ion-label>
           <ion-input [hidden] formControlName="username" name="username" type="text"></ion-input>
         </ion-item>
         <!-- Pour afficher les erreurs liées aux patterns que l'on a précisé dans sign-up.page.ts -->
