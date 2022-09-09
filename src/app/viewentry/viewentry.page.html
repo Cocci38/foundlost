@@ -31,7 +31,7 @@
             <!-- Si le status = 0 et si users_id de l'objet est = à l'id_user de la personne connectée alors on peut modifier le status de perdu à trouvé -->
             <ion-toolbar *ngIf="viewData.status == 0 && viewData.users_id == id_user">
               <ion-segment value="{{viewData.status}}">
-                <ion-segment-button value="0" class="perdu">
+                <ion-segment-button value="0" (click)="update(1)" class="perdu">
                   Perdu
                 </ion-segment-button>
                 <ion-segment-button value="1" (click)="update(0)" class="trouve">

@@ -96,8 +96,7 @@ export class ViewentryPage implements OnInit {
     this.apiService.updateViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
       console.log(this.viewData.status);
-
-      
+      this.router.navigate(["/viewentry/"+this.viewData.id])
     });
   }
   // Fonction de déconnexion
