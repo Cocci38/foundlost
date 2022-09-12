@@ -22,7 +22,7 @@ export class FoundPage implements OnInit {
   firstname: string;
   lastname: string;
   email: string;
-  users_id: number;
+  user_id: number;
   isSubmitted = false;
   constructor(public apiService: UserService, public formBuilder: FormBuilder, private toastController: ToastController, private route: ActivatedRoute, private router: Router) {
     // Si il n'y a pas une session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètres de session pour s'en servir plus loin
@@ -38,13 +38,13 @@ export class FoundPage implements OnInit {
     // Pattern pour la sécurisation du formulaire
     this.foundForm = this.formBuilder.group({
       status: ['1'],
-      description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{10,}$')]],
+      description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{10,250}$')]],
       date: [null, Validators.required],
-      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
-      firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
-      lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
+      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,100}$')]],
+      firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
+      lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
       email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      users_id: [sessionStorage.getItem('id_user')]
+      user_id: [sessionStorage.getItem('id_user')]
     });
   }
   // getDate(e: { target: { value: string | number | Date; }; }) {
@@ -120,10 +120,9 @@ export class FoundPage implements OnInit {
         console.log("SUCCES ===", res);
         // Si la réponse est égale à true, on lance le toats valid
         if (res == true) {
-          // this.router.navigateByUrl("/foundlist");
           this.isSubmitted = false;
           this.valide();
-          
+          this.router.navigateByUrl("/foundlist");
         } else {
           // Sinon on envoie le toat invalid
           this.invalid();

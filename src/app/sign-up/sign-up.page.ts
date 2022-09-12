@@ -30,13 +30,13 @@ export class SignUpPage implements OnInit {
     // Pattern pour la sécurisation des formulaires
     this.signUpForm = this.formBuilder.group({
       id_user: [''],
-      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
+      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
       user_email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,25}$')]]
     });
     this.loginForm = this.formBuilder.group({
       user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,25}$')]]
     });
   }
 

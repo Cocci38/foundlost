@@ -22,7 +22,7 @@ export class LostPage implements OnInit {
   firstname: string;
   lastname: string;
   email: string;
-  users_id: number;
+  user_id: number;
   isSubmitted = false;
 
   constructor(public apiService: UserService, public formBuilder: FormBuilder, public toastController: ToastController, private route: ActivatedRoute, private router: Router) {
@@ -41,13 +41,13 @@ export class LostPage implements OnInit {
     // Pattern pour la sécurisation du formulaire
     this.lostForm = this.formBuilder.group({
       status: ['0'],
-      description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{10,}$')]],
+      description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{10,250}$')]],
       date: [null, Validators.required],
-      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
-      firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
-      lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,}$')]],
+      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,100}$')]],
+      firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
+      lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
       email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      users_id: [sessionStorage.getItem('id_user')]
+      user_id: [sessionStorage.getItem('id_user')]
     });
   }
   // getDate(e: { target: { value: string | number | Date; }; }) {
@@ -124,6 +124,7 @@ export class LostPage implements OnInit {
         if (res == true) {
           this.isSubmitted = false;
           this.valide();
+          this.router.navigateByUrl("/lostlist");
         } else {
           // Sinon on envoie le toat invalid
           this.invalid();

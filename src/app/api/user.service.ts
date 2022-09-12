@@ -31,7 +31,7 @@ export class UserService {
 
   // Méthode pour l'envoi du formulaire d'inscription 
   submitSignUpForm(data: any) {
-    return this.http.post('http://localhost/ionicserver/manage-data.php?key=users', data);
+    return this.http.post('http://localhost/ionicserver/manage-data.php?key=sign-up', data);
   }
 
   // Méthode pour l'envoi du formulaire de connexion
@@ -50,7 +50,4 @@ export class UserService {
     // console.log('Je passe par là');
     return this.http.get('http://localhost/ionicserver/manage-data.php?key=update&id=' + id);
   }
-  // getEntry(data: any) {
-  //   return this.http.get('http://localhost/ionicserver/retrieve-data.php', data);
-  // }
 }

@@ -22,7 +22,7 @@ export class ViewentryPage implements OnInit {
     firstname: '',
     lastname: '',
     email: '',
-    users_id: ''
+    user_id: ''
   };
   username: string;
   id_user: string;
@@ -74,7 +74,7 @@ export class ViewentryPage implements OnInit {
       this.viewData.firstname = data['firstname'];
       this.viewData.lastname = data['lastname'];
       this.viewData.email = data['email'];
-      this.viewData.users_id = data['users_id'];
+      this.viewData.user_id = data['user_id'];
       // console.log(this.entryData[0].id );
     });
   }

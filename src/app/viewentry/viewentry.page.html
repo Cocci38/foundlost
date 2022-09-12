@@ -23,13 +23,13 @@
         <ion-item lines="none">
           <ion-label>
             <h1>{{viewData.description}}</h1>
-            <p *ngIf="viewData.status == 0"> perdu à {{viewData.location}}, le {{viewData.date}}</p>
-            <p *ngIf="viewData.status == 1"> trouvé à {{viewData.location}}, le {{viewData.date}}</p>
+            <p *ngIf="viewData.status == 0"> perdu à {{viewData.location}}, le {{viewData.date | date: 'dd/MM/yyyy'}}</p>
+            <p *ngIf="viewData.status == 1"> trouvé à {{viewData.location}}, le {{viewData.date | date: 'dd/MM/yyyy'}}</p>
             <p>Prénom : {{viewData.firstname}} </p>
             <p>Nom : {{viewData.lastname}}</p>
             <p>Email : {{viewData.email}}</p>
-            <!-- Si le status = 0 et si users_id de l'objet est = à l'id_user de la personne connectée alors on peut modifier le status de perdu à trouvé -->
-            <ion-toolbar *ngIf="viewData.status == 0 && viewData.users_id == id_user">
+            <!-- Si le status = 0 et si user_id de l'objet est = à l'id_user de la personne connectée alors on peut modifier le status de perdu à trouvé -->
+            <ion-toolbar *ngIf="viewData.status == 0 && viewData.user_id == id_user">
               <ion-segment value="{{viewData.status}}">
                 <ion-segment-button value="0" (click)="update(1)" class="perdu">
                   Perdu
@@ -39,8 +39,8 @@
                 </ion-segment-button>
               </ion-segment>
             </ion-toolbar>
-            <!-- Si le status = 0 et si users_id de l'objet est différent de l'id_user de la personne connectée alors on affiche le status de l'objet Objet perdu -->
-            <ion-item *ngIf="viewData.status == 0 && viewData.users_id !== id_user" lines="full" class="echec">
+            <!-- Si le status = 0 et si user_id de l'objet est différent de l'id_user de la personne connectée alors on affiche le status de l'objet Objet perdu -->
+            <ion-item *ngIf="viewData.status == 0 && viewData.user_id !== id_user" lines="full" class="echec">
               <ion-label> Objet perdu </ion-label>
             </ion-item>
             <!-- Si le status = 1 alors on affiche le status de l'objet Objet retrouvé -->
@@ -49,9 +49,9 @@
             </ion-item>
           </ion-label>
         </ion-item>
-        <!-- Si le status = 0 et si users_id de l'objet est = à l'id_user de la personne connectée alors on peut supprimer l'objet -->
+        <!-- Si le status = 0 et si user_id de l'objet est = à l'id_user de la personne connectée alors on peut supprimer l'objet -->
         <ion-item-options side="end">
-          <ion-item-option *ngIf="viewData.users_id == id_user" size="large" (click)="delete(viewData.id)">
+          <ion-item-option *ngIf="viewData.user_id == id_user" size="large" (click)="delete(viewData.id)">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-item-option>
         </ion-item-options>

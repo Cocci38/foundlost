@@ -45,6 +45,4 @@ export class HomePage {
     // On lance le toat de déconnexion réussi
     this.account();
   }
-
-
 }
