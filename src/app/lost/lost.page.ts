@@ -119,7 +119,7 @@ export class LostPage implements OnInit {
       console.log(this.lostForm.value)
       // Sinon le formulaire est valide, on envoie le formulaire vers le serveur
       this.apiService.submitForm(this.lostForm.value).subscribe((res) => {
-        console.log("SUCCES ===", res);
+        // console.log("SUCCES ===", res);
         // Si la réponse est égale à true, on lance le toats valid
         if (res == true) {
           this.isSubmitted = false;

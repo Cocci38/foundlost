@@ -43,7 +43,7 @@ export class FoundPage implements OnInit {
       location: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,100}$')]],
       firstname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
       lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z-\' æœçéàèùâêîôûëïüÿÂÊÎÔÛÄËÏÖÜÀÆÇÉÈŒÙ]{3,25}$')]],
-      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       user_id: [sessionStorage.getItem('id_user')]
     });
   }
@@ -117,7 +117,7 @@ export class FoundPage implements OnInit {
       // Sinon le formulaire est valide et on envoie le formulaire vers le serveur 
       // Le service renvoi un Observable, donc terminer en ajoutant la promesse subscribe()
       this.apiService.submitForm(this.foundForm.value).subscribe((res) => {
-        console.log("SUCCES ===", res);
+        // console.log("SUCCES ===", res);
         // Si la réponse est égale à true, on lance le toats valid
         if (res == true) {
           this.isSubmitted = false;

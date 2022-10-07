@@ -35,7 +35,7 @@ export class SignUpPage implements OnInit {
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,25}$')]]
     });
     this.loginForm = this.formBuilder.group({
-      user_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      user_email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9-?!*+/]{8,25}$')]]
     });
   }
@@ -102,7 +102,7 @@ export class SignUpPage implements OnInit {
       // this.user_email = this.signUpForm.value['user_email'];
       // On effectue la validation
       this.apiService.submitSignUpForm(this.signUpForm.value).subscribe((res) => {
-        console.log("SUCCES ===", res);
+        // console.log("SUCCES ===", res);
         // Si la réponse est false, l'email existe déjà donc pas de validation
         if (res == false) {
           this.unique_email();
@@ -134,7 +134,7 @@ export class SignUpPage implements OnInit {
       // this.user_email = this.loginForm.value['user_email'];
       // console.log(this.username);
       this.apiService.submitLoginForm(this.loginForm.value).subscribe((res) => {
-        console.log("SUCCES ===", res);
+        // console.log("SUCCES ===", res);
         if (res) {
           sessionStorage.setItem('username', res['username']);
           sessionStorage.setItem('id_user', res['id_user']);
