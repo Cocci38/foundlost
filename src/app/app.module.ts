@@ -7,7 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// Module qui permet de communiquer avec une API à distance
 import { HttpClientModule } from '@angular/common/http';
+// Modules qui permettent de générer et de piloter chaque élément d’un formulaire
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
