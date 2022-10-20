@@ -29,8 +29,11 @@ export class ViewentryPage implements OnInit {
   constructor(public http: HttpClient, private route: ActivatedRoute, private router: Router, public apiService: UserService, private toastController: ToastController) {
 
     this.route.params.subscribe(params => {
-      console.log('L\'id de la route est: ', params.id);
-      // Si il n'y a pas de session utilisateur on est renvoyé sur la page de connexion sinon on peut rester et on stocke les paramètres de session pour s'en servir plus loin
+      //console.log('L\'id de la route est: ', params.id);
+      /**
+       *  S'il n'y a pas de session utilisateur on est renvoyé sur la page de connexion 
+       *  sinon on peut rester et on stocke les paramètres de session pour s'en servir plus après
+       */
       if (!sessionStorage.getItem('username')) {
         this.router.navigateByUrl("/sign-up");
       } else {
@@ -86,16 +89,14 @@ export class ViewentryPage implements OnInit {
       if (delete (this.viewData.id)) {
         this.router.navigateByUrl("/home");
       }
-      console.log(this.viewData.id);
-
+      // console.log(this.viewData.id);
     });
-    // viewData.resetForm();
   }
   // Fonction pour modifier le status de l'objet
   update(viewData: any) {
     this.apiService.updateViewData(this.viewData.id).subscribe((viewData) => {
       this.getEntry();
-      console.log(this.viewData.status);
+      //console.log(this.viewData.status);
       this.router.navigate(["/viewentry/"+this.viewData.id])
     });
   }

@@ -46,9 +46,9 @@ export class SignUpPage implements OnInit {
   }
 
   // Fonction pour rendre visible ou invisible une partie de la page : 
-  // Pour afficher ou non le formulaire de connection
+  // Pour afficher ou non le formulaire de connexion
   connect() {
-    console.log('connection');
+    console.log('connexion');
     this.isConnect = true;
     this.isInscrire = false;
   }
